@@ -1,0 +1,47 @@
+
+.finish_button img{
+    width: auto;
+    height: 30px;
+}
+
+.form_to_enter input, button {
+    display: block;
+}
+
+.post_div {
+    border: 2px solid black;
+    height: auto;
+    width: auto;
+}
+
+#popup{
+    display: none;
+}
+.left_side{
+    display: inline-block;
+    
+    width: 40%;
+}
+.right_side{
+    display: inline-block;
+    
+    width: 40%;
+    border: 1px solid black;
+    height: 200px;
+    overflow-y: scroll;
+    
+}
+.comment_unit{
+    font-size: smaller;
+    border: 1px solid black;
+    align-items: center;
+}
+.lista{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display:flex;
+}
+.lista li{
+    margin-right: 10px;
+}
