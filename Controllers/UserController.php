@@ -12,6 +12,7 @@ class UserController extends Controller{
         while ($row = mysqli_fetch_assoc($result)) {
             if ($email == $row['usu_email'] && $senha == $row['usu_senha']) {
                 $_SESSION['user_id'] = $row['usu_id'];
+                $_SESSION['user_name'] = $row['usu_nome'];
                 header('Location: Principal.php');
                 return; // Termina o script para evitar execução adicional.
             }

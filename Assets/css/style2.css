@@ -1,0 +1,556 @@
+*{
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+
+}
+
+body {
+    background-color: #1C2120;
+    color:white; 
+    font-family: 'Roboto', sans-serif;
+
+    -webkit-font-smoothing: antialiased !important;
+  }
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    transition: all ease-in-out 0.5s;
+    z-index: 9997;
+    transition: all 0.5s;
+    padding: 0 15px;
+    background: #040b14;
+    overflow-y: auto;
+  }
+  
+  #header .profile img {
+    margin: 15px auto;
+    display: block;
+    width: 100px;
+    border-radius: 50%;
+  }
+  
+  #header .profile h1 {
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    -moz-text-align-last: center;
+    text-align-last: center;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  #header .profile h1 a,
+  #header .profile h1 a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  #header .profile .social-links a {
+    font-size: 18px;
+    display: inline-block;
+    background: #212431;
+    color: #fff;
+    line-height: 1;
+    padding: 8px 0;
+    margin-right: 4px;
+    border-radius: 50%;
+    text-align: center;
+    width: 36px;
+    height: 36px;
+    transition: 0.3s;
+  }
+  
+  #header .profile .social-links a:hover {
+    background: #149ddd;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .main {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  li.newPost{
+    width: 90%;
+    height: 240px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 50px 0px;
+    padding: 25px;
+
+    background: #040b14;
+    border-radius: 10px;
+    box-shadow: 1px 0 3px rgba(0,0,0,0.2);
+    float: right;
+  }
+
+  li.newPost div.infoUser{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  li.newPost div.infoUser div.imgUser{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #FCDA4D;
+  }
+
+  li.newPost div.infoUser strong{
+    font-size: 16px;
+    color: #FCDA4D;
+    margin-left: 10px;
+  }
+
+  li.newPost form.formPost{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  li.newPost form.formPost textarea{
+    height: 90px;
+    background-color: #1C2120;
+    margin: 15px 0;
+    padding: 25px;
+    border-radius: 10px;
+    resize: none;
+    outline: none;
+    border: 0;
+    width: 100%;
+
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+
+  }
+
+  li.newPost form.formPost div.iconsAndButton{
+    display: flex;
+    float: right;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  li.newPost form.formPost div.iconsAndButton div.icons{
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  li.newPost form.formPost div.iconsAndButton div.icons button{
+   display: flex;
+   float: left;
+    outline: none;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+
+    border: 0;
+
+    background: none;
+
+    cursor: pointer;
+  }
+  
+  li.newPost form.formPost div.iconsAndButton button.btnSubmitForm{
+    background-color: #FCDA4D;
+    padding: 10px 50px;
+    color: #1C2120;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    border: 0;
+    border-radius: 10px;
+    transition: background 0.2s;
+  }
+
+  li.newPost form.formPost div.iconsAndButton button.btnSubmitForm:hover{
+    background: #1C2120;
+    color: #FCDA4D;
+  }
+
+  ul.posts li.post{
+    padding: 25px;
+    margin-bottom: 50px;
+    background-color: #040b14;
+    border-radius: 10px;
+    box-shadow: 1px 0 3px rgba(0,0,0,0.2);
+    float: right;
+    width: 90%;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+  }
+/*
+  li.newPost div.infoUser strong{
+    font-size: 16px;
+    color: #FCDA4D;
+    margin-left: 10px;
+  }
+  width: 90%;
+    height: 240px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 50px 0px;
+    
+    */
+
+  ul.posts li.post div.infoUserPost{
+    display: flex;
+    
+  }
+
+  ul.posts li.post div.infoUserPost div.imgUserPost{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #FCDA4D;
+    margin-right: 10px;
+  }
+
+  ul.posts li.post div.infoUserPost div.imgUserPost div.nameAndHour{
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  /* n está funcionando */
+  /* é para deixar somente o nome do usuário amarelo*/
+  ul.posts li.post div.infoUserPost div.imgUserPost div.nameAndHour strong{  
+    
+    color: #FCDA4D;
+  }
+
+  /* n está funcionando*/
+  /* é para deixar somente a hora na cor branca*/
+  ul.posts li.post div.infoUserPost div.imgUserPost div.nameAndHour p{
+   
+    color: #fff;
+    font-size: 12px;
+  }
+
+  ul.posts li.post >p{
+    width: 100%;
+    font-weight: bold;
+    text-align: justify;
+  }
+
+  ul.posts li.post div.actionBtnPost{
+    display: flex;
+    align-items: center;
+  }
+
+  ul.posts li.post div.actionBtnPost button{
+    padding: 5px 20px;
+    border: 0;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    border-radius: 10px;
+    color: #FCDA4D;
+    cursor: pointer;
+    background-color: transparent;
+  }
+
+  ul.posts li.post div.actionBtnPost button.filesPost i{
+    margin-right: 5px;
+  }
+
+
+/*--------------------------------------------------------------
+# notifications.html
+--------------------------------------------------------------*/
+
+  ul.notifications li.notification{
+    padding: 40px;
+    margin-bottom: 10px;
+    background-color: #040b14;
+    border-radius: 15px;
+    box-shadow: 1px 0 3px rgba(0,0,0,0.2);
+    float: right;
+    width: 90%;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .headerNot >strong{
+    width: 90%;
+    font-size: 20px;
+    color: #FCDA4D;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 15px 0px;
+    padding: 25px;
+
+    float: right;
+    
+  }
+
+  .headerNot div.notIcon {
+    color: #FCDA4D;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+/*--------------------------------------------------------------
+# search.html
+--------------------------------------------------------------*/
+
+div.busca{
+  display: flex;
+  flex-direction: column;
+}
+
+div.busca div.pesquisa{
+  
+  padding: 40px;
+  margin: 20px;
+  background-color: #040b14;
+  border-radius: 15px;
+  box-shadow: 1px 0 3px rgba(0,0,0,0.2);
+  float: right;
+  width: 60%;
+ 
+  align-items: center;
+  justify-content: center;
+ 
+ 
+}
+
+div.busca div.pesquisa >input{
+
+  height: 60px;
+  background-color: #1C2120;
+ 
+  padding: 25px;
+  border-radius: 10px;
+  resize: none;
+  outline: none;
+  border: 0;
+  width: 60%;
+
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+
+
+}
+
+div.busca div.pesquisa >button{
+  color: #FCDA4D;
+  background-color: #1C2120;
+  border-radius: 10px;
+  height: 60px;
+  width: 20%;
+  
+}
+
+div.busca div.pesqFiltro li{
+  
+  background-color: #040b14;
+  list-style: none;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+div.busca div.pesqFiltro button{ 
+  padding: 5px 20px;
+  border: 0;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  border-radius: 10px;
+  background-color: #FCDA4D;
+  color: #fff;
+}
+
+div.sugestoes ul{
+
+  background-color: #040b14;
+  list-style: none;
+ 
+}
+
+ul.recomendacoes li.search{
+    padding: 25px;
+    margin-bottom: 50px;
+    background-color: #040b14;
+    border-radius: 10px;
+    box-shadow: 1px 0 3px rgba(0,0,0,0.2);
+    float: right;
+    width: 30%;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+  
+}
+
+ul.recomendacoes li.search div.infoUserPost{
+  display: flex;
+  margin-right: 10px;
+  
+}
+
+ul.recomendacoes li.search div.infoUserPost div.imgUserPost{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #FCDA4D;
+  margin-right: 10px;
+}
+
+ul.recomendacoes li.search >a{
+  display: flex;
+  flex-direction: column;
+}
+  
+
+  .container,
+  .container-fluid {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  
+  @media (max-width: 1199px) {
+    #header {
+      left: -300px;
+    }
+  
+    #main {
+      margin-left: 0;
+    }
+  
+    .container,
+    .container-fluid {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+  }
+  
+  /*--------------------------------------------------------------
+  # Navigation Menu
+  --------------------------------------------------------------*/
+  /* Desktop Navigation */
+  .nav-menu {
+    padding: 30px 0 0 0;
+  }
+  
+  .nav-menu * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .nav-menu>ul>li {
+    position: relative;
+    white-space: nowrap;
+  }
+  
+  .nav-menu a,
+  .nav-menu a:focus {
+    display: flex;
+    align-items: center;
+    color: #a8a9b4;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    transition: 0.3s;
+    font-size: 15px;
+  }
+  
+  .nav-menu a i,
+  .nav-menu a:focus i {
+    font-size: 24px;
+    padding-right: 8px;
+    color: #6f7180;
+  }
+  
+  .nav-menu a:hover,
+  .nav-menu .active,
+  .nav-menu .active:focus,
+  .nav-menu li:hover>a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .nav-menu a:hover i,
+  .nav-menu .active i,
+  .nav-menu .active:focus i,
+  .nav-menu li:hover>a i {
+    color: #FCDA4D;
+  }
+  
+  /* Mobile Navigation */
+  .mobile-nav-toggle {
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    z-index: 9998;
+    border: 0;
+    font-size: 24px;
+    transition: all 0.4s;
+    outline: none !important;
+    background-color: #149ddd;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  
+  .mobile-nav-active {
+    overflow: hidden;
+  }
+  
+  .mobile-nav-active #header {
+    left: 0;
+  }
+
+.pill{
+    text-align: justify;
+    background-color: black;
+    padding: 30px;
+    border-radius: 30px;
+    padding-right: 5%;
+    max-width: 100%; 
+    margin: 30px auto;
+}
+
+button{
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+.bi{
+    color: #FCDA4D;;
+}

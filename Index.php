@@ -1,7 +1,18 @@
 <?php
 require 'Controllers/UserController.php';
 
-$controlador = new UserController();
+  $controlador = new UserController();
+
+  if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Obtenha os dados do formulário
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+    if($email != null and $password != null){
+        $controlador->userLogin($email, $password);
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -32,18 +43,5 @@ $controlador = new UserController();
             <p><a href="senha.html">Esqueceu sua senha?</a></p>
           </form>
     </main>    
-
-    <?php
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            // Obtenha os dados do formulário
-            $email = $_POST["email"];
-            $password = $_POST["password"];
-
-            if($email != null and $password != null){
-                $controlador->userLogin($email, $password);
-            }
-        }
-       
-    ?>
-</body>
+  </body>
 </html>
