@@ -14,12 +14,7 @@ class Conexao{
 
         return $connection;
     }
-
-    // public function close_connection(){
-
-    // }
     
-
 }
 
 

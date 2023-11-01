@@ -24,6 +24,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style2.css" rel="stylesheet">
+  <link href="assets/css/style_3.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: iPortfolio
@@ -39,7 +40,6 @@
   <!-- ======= Mobile nav toggle button ======= -->
   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
 
-  <!-- ======= Header ======= -->
    <header id="header">
     <div class="d-flex flex-column">
 
@@ -54,8 +54,8 @@
           <li><a href="notifications.html" class="nav-link scrollto"><i class="bx bx-bell"></i> <span>Notificações</span></a></li>
           <li><a href="Pesquisa.php" class="nav-link scrollto"><i class="bx bx-search"></i> <span>Pesquisar</span></a></li>
           <li><a href="saves.html" class="nav-link scrollto"><i class="bx bx-bookmark"></i> <span>Salvos</span></a></li>
-          <li><a href="perfil.html" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Perfil</span></a></li>
+          <li><a href="Perfil.php" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Perfil</span></a></li>
         </ul>
-      </nav><!-- .nav-menu -->
+      </nav>
     </div>
-  </header>End Header 
+  </header><!-- End Header  -->

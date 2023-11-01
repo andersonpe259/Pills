@@ -48,4 +48,24 @@ class UserController extends Controller{
         }
     }
 
+    public function editarAvatar($id, $avatar) {
+        $query = "UPDATE tb_usuarios SET usu_avatar = ? WHERE usu_id = ?";
+        $con = $this->conect->conection();
+        $stmt = $con->prepare($query);
+    
+        if ($stmt) {
+            $stmt->bind_param("si", $avatar, $id);
+            if ($stmt->execute()) {
+                echo "Registro editado com sucesso!";
+                $stmt->close();
+                $con->close();
+            } else {
+                throw new Exception("Erro: " . $con->error);
+            }
+        } else {
+            throw new Exception("Erro: " . $con->error);
+        }
+    }
+    
+
 }

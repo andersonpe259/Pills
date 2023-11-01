@@ -87,7 +87,7 @@ class PostController extends Controller{
             // Processar o resultado, se necessário
                 while ($row = mysqli_fetch_assoc($result)) {
                     $comentarios = $this->viewComment($row['pos_id']);
-                    $rows = [$row['usu_nome'], $row['pos_data_postagem'], $row['pos_conteudo'], $row['pos_id'], $comentarios];
+                    $rows = [$row['usu_avatar'], $row['usu_nome'], $row['pos_data_postagem'], $row['pos_conteudo'], $row['pos_id'], $comentarios];
                     $showHtml = $this->substituteValues($html[1], $keywords, $rows);
                     echo $showHtml;
                 }

@@ -6,7 +6,6 @@ $controlador = new PostController();
 $paginaControlador = new PageController();
 
 if($_SERVER["REQUEST_METHOD"] === "GET") {
-    session_start();
     $_SESSION["search"] = "";
     $_SESSION["filtro"] = 1;
     $_SESSION["tag"] = 0;

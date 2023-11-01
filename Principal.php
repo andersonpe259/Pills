@@ -5,8 +5,6 @@ require 'Controllers/PageController.php';
 $controlador = new PostController();
 $paginaControlador = new PageController();
 
-session_start();
-
 $usuario = $_SESSION["user_name"];
 
 
@@ -30,7 +28,7 @@ include('Controllers/foundation/Layout.php');
       <ul class="posts">
       <li class="newPost">
         <div class="infoUser">
-          <div class="imgUser"> </div>
+          <div class="imgUser"><img src="<?php echo $_SESSION["avatar"] ?>" alt=""></div>
           <strong> <?php echo $usuario ?> </strong>
         </div>
 

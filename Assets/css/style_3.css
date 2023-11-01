@@ -1,0 +1,16 @@
+.perfil_div{
+    margin-left: 18%;
+}
+.img_fundo{
+    height: 200px;
+    overflow: hidden;
+}
+.img_fundo img{
+    width: 100%;
+}
+.avatar img{
+    border-radius: 50%;
+}
+.avatar img{
+    height: 100px;
+}
