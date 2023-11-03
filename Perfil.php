@@ -1,8 +1,8 @@
 <?php
-require_once 'Controllers/PostController.php';
-//require_once 'Controllers/UserController.php';
+require 'Controllers/PostController.php';
+require 'Controllers/UserController.php';
 
-//$userEdit = new UserController();
+$userEdit = new UserController();
 
 function verificarEIniciarSessao() {
     if (session_status() == PHP_SESSION_NONE) {
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             if (move_uploaded_file($nome_temporario, $caminho_destino)) {
                 echo "A imagem foi carregada com sucesso.";
-                //$userEdit->editarAvatar($_SESSION['user_id'], $caminho_destino);
+                $userEdit->editarAvatar($_SESSION['user_id'], $caminho_destino);
                 $_SESSION['avatar'] = $caminho_destino;
             } else {
                 echo "Erro ao carregar a imagem.";

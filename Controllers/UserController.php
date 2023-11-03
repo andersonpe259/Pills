@@ -1,5 +1,5 @@
 <?php
-require 'foundation/Controller.php';
+require_once 'foundation/Controller.php';
 
 class UserController extends Controller{
 
@@ -13,6 +13,7 @@ class UserController extends Controller{
             if ($email == $row['usu_email'] && $senha == $row['usu_senha']) {
                 $_SESSION['user_id'] = $row['usu_id'];
                 $_SESSION['user_name'] = $row['usu_nome'];
+                $_SESSION['avatar'] = $row['usu_avatar'];
                 header('Location: Principal.php');
                 return; // Termina o script para evitar execução adicional.
             }

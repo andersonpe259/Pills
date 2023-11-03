@@ -26,7 +26,7 @@ class SqlCommands{
                                             LEFT JOIN tb_usuarios on com_usu_id = usu_id 
                                             WHERE com_pos_id = ?;"
         ],
-        "filterTagPost" => [
+        "tagPost" => [
             "SELECT has_id, has_hashtag FROM tb_hashtag;"
         ]
 
@@ -34,19 +34,6 @@ class SqlCommands{
 
     private $listHtmlGenarate = array(
         "viewPost" => [
-            "<div class='post_div'>
-            <div class='left_side'>
-            <h1>#nome#</h1>
-            <p>Post: #post#</p>
-            <form action='Principal.php' method='post'>
-                <input type='hidden' name='idPost' value='#id#'>
-                <input type='text' name='comment' id='comment'>
-                <button><i class='finish_button'><img src='assets/img/button_go.png' alt='Concluir'></i></button>
-            </form>
-            </div>
-            <div class='right_side'>#comentarios#</div>
-            </div>",
-
             "<li class='post'>
                 <div class='infoUserPost'>
                     <div class='imgUserPost'><img src='#avatar#' alt=''></div>
@@ -62,24 +49,12 @@ class SqlCommands{
 
                 <div class='actionBtnPost'>
                     <button type='button' class='filepost'><i class='bi bi-heart' alt='curtir'></i></button>
-                    <button type='button' class='filepost'><i class='bi bi-chat' alt='comentar'></i></button>
+                    <button type='button' value='#id#' class='filepost'><i class='bi bi-chat' alt='comentar'></i></button>
                     <button type='button' class='filepost'><i class='bi bi-send' alt='compartilhar'></i></button>
                     <button type='button' class='filepost'><i class='bi bi-bookmark' alt='salvar'></i></button>
                 </div>
 
         </li>"
-        ],
-        "keyWords-vp" =>[
-            "#nome#",
-            "#post#",
-            "#id#",
-            "#comentarios#"
-        ],
-        "keyWords-vp2" =>[
-            "#avatar#",
-            "#nome#",
-            "#data#",
-            "#post#"
         ],
 
         "viewComment" => [
@@ -88,18 +63,43 @@ class SqlCommands{
                 <p>#comentario#</p>
                 </div>"
         ],
-        "keyWords-vc"=>[
-            "#nome#",
-            "#data#",
-            "#comentario#"
+       
+        "tagPost"=>[
+            "<li>
+                <button type='submit' class='nav-link scrollto' name='tag' value='#id#'>
+                    <i class='bi bi-hash'></i> <span>#hashtag#</span>
+                </button>
+            </li>"
         ]
 
+        );
+        private $listKeywords = array(
+            "viewPost" =>[
+                "#avatar#",
+                "#nome#",
+                "#data#",
+                "#post#",
+                "#id#"
+            ],
+
+            "viewComment"=>[
+                "#nome#",
+                "#data#",
+                "#comentario#"
+            ],
+            "tagPost"=>[
+                "#id#",
+                "#hashtag#"
+            ]
         );
     public function getCommand($function /*Ex: "userPost" */){
         return $this->listCommandSql[$function];
     }
     public function getHtml($html){
         return $this->listHtmlGenarate[$html];
+    }
+    public function getKeywords($keyword){
+        return $this->listKeywords[$keyword];
     }
 
 }

@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $controlador->userPost($text);
     }
     if($comment != null){
-        $controlador->commentPost($idPost, $comment);
+        //$controlador->commentPost($idPost, $comment);
     }
 }
 include('Controllers/foundation/Layout.php');

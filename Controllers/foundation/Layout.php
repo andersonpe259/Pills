@@ -38,8 +38,7 @@
 <body>
 
   <!-- ======= Mobile nav toggle button ======= -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
-
+   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
    <header id="header">
     <div class="d-flex flex-column">
 
@@ -58,4 +57,4 @@
         </ul>
       </nav>
     </div>
-  </header><!-- End Header  -->
+  </header>

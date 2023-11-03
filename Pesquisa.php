@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
 
     if($comment != null){
-        $controlador->commentPost($idPost, $comment);
+        //$controlador->commentPost($idPost, $comment);
     }
 }
 include('Controllers/foundation/Layout.php');
@@ -56,8 +56,16 @@ include('Controllers/foundation/Layout.php');
         $controlador->viewPost($_SESSION["filtro"]);
     }
     elseif($_SESSION["filtro"] == 2){
-        $controlador->filterTagPost();
-        $controlador->viewPost($_SESSION["filtro"], $_SESSION["tag"]);
+
+      echo "<div class='sugestoes'>
+              <ul>
+                <form method='post' action='Pesquisa.php'>";
+                  $controlador->tagPost();
+      echo "    </form>
+              </ul>
+            </div>";
+
+      $controlador->viewPost($_SESSION["filtro"], $_SESSION["tag"]);
     }
 
 ?>
