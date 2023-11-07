@@ -50,4 +50,5 @@ include('Controllers/foundation/Layout.php');
       </ul>
 
   </main>
+  <script src="assets/js/main.js"></script>
 </body>

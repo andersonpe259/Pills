@@ -5,6 +5,39 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+// Selecionar todos os botões com a classe "openModal"
+const modalButtons = document.querySelectorAll(".openModal");
+
+// Adicionar um evento de clique a cada botão
+modalButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+        // Encontrar o modal relacionado ao botão clicado usando o atributo "data-modal"
+        const modalId = button.getAttribute("data-modal");
+        const modal = document.getElementById(modalId);
+
+        // Exibir o modal ao clicar no botão
+        modal.style.display = "block";
+
+        // Lidar com o fechamento do modal
+        const closeButton = modal.querySelector(".close");
+        closeButton.addEventListener("click", function() {
+            modal.style.display = "none";
+        });
+
+        // Fechar o modal ao clicar fora dele
+        window.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    });
+});
+
+
+
+
+
+
 (function() {
   "use strict";
 
