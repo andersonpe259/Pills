@@ -1,9 +1,7 @@
 <?php
-require 'Controllers/PostController.php';
-require 'Controllers/PageController.php';
+require (__DIR__."/../App/Controllers/PostController.php");
 
 $controlador = new PostController();
-$paginaControlador = new PageController();
 
 if($_SERVER["REQUEST_METHOD"] === "GET") {
     $_SESSION["search"] = "";
@@ -27,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         //$controlador->commentPost($idPost, $comment);
     }
 }
-include('Controllers/foundation/Layout.php');
+include(__DIR__.'/Layout/Layout.php');
 ?>
 
 <main id="main">
@@ -73,5 +71,5 @@ include('Controllers/foundation/Layout.php');
 
   </div>
 </main>
-<script src="assets/js/main.js"></script>
+<script src="../Resources/Assets/js/main.js"></script>
 </body>

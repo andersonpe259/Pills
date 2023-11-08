@@ -1,6 +1,6 @@
 <?php
-require 'Controllers/PostController.php';
-require 'Controllers/UserController.php';
+require (__DIR__."/../App/Controllers/PostController.php");
+require (__DIR__."/../App/Controllers/UserController.php");
 
 $userEdit = new UserController();
 
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-include('Controllers/foundation/Layout.php');
+include(__DIR__.'/Layout/Layout.php');
 
 ?>
 <div class="perfil_div">

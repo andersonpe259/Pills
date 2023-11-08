@@ -9,22 +9,22 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <link rel="icon" href="assets/img/pills.jpg" type="image/x-icon">
+  <link rel="icon" href="../../Resources/Assets/img/pills.jpg" type="image/x-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../../Resources/Assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../../Resources/Assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../Resources/Assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../../Resources/Assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../../Resources/Assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../../Resources/Assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style2.css" rel="stylesheet">
-  <link href="assets/css/style_3.css" rel="stylesheet">
+  <link href="../../Resources/Assets/css/style2.css" rel="stylesheet">
+  <link href="../../Resources/Assets/css/style_3.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: iPortfolio
@@ -43,7 +43,7 @@
     <div class="d-flex flex-column">
 
       <div class="profile">
-        <img src="assets/img/pills.jpg" alt="" class="img-fluid rounded-circle">
+        <img src="../../Resources/Assets/img/pills.jpg" alt="" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="Principal.php">Pills</a></h1>
       </div>
 

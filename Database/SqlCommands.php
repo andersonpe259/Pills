@@ -21,7 +21,7 @@ class SqlCommands{
             "INSERT INTO tb_comentarios (com_usu_id, com_pos_id, com_texto) VALUES (?, ?, ?);"
         ],
         "viewComment" => [
-            "SELECT com_texto, usu_nome, com_data_comentario FROM tb_comentarios 
+            "SELECT usu_avatar, com_texto, usu_nome, com_data_comentario FROM tb_comentarios 
                                             LEFT JOIN tb_posts ON com_pos_id = pos_id
                                             LEFT JOIN tb_usuarios on com_usu_id = usu_id 
                                             WHERE com_pos_id = ?;"
@@ -54,8 +54,7 @@ class SqlCommands{
                 <div class='modal-content'>
                   <span class='close'>&times;</span>
                     <h2>Comentários</h2>
-                    <h5>Wallison</h5>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    #comentarios#
                     <h5>Ana Júlia</h5>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                     <input type='text' name='nome' placeholder='Digite seu comentário'><button>Enviar</button>
@@ -69,10 +68,10 @@ class SqlCommands{
         ],
 
         "viewComment" => [
-            "<div class='comment_unit'>
-                <h4>#nome# #data#</h4>
+            "
+                <h5>#nome# #data#</h5>
                 <p>#comentario#</p>
-                </div>"
+            "
         ],
        
         "tagPost"=>[
@@ -90,10 +89,12 @@ class SqlCommands{
                 "#nome#",
                 "#data#",
                 "#post#",
-                "#id#"
+                
+                
             ],
 
             "viewComment"=>[
+                
                 "#nome#",
                 "#data#",
                 "#comentario#"

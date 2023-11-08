@@ -1,5 +1,5 @@
 <?php
-require_once 'foundation/Controller.php';
+require_once (__DIR__."/../../Config/Controller.php");
 
 class UserController extends Controller{
 
@@ -14,7 +14,7 @@ class UserController extends Controller{
                 $_SESSION['user_id'] = $row['usu_id'];
                 $_SESSION['user_name'] = $row['usu_nome'];
                 $_SESSION['avatar'] = $row['usu_avatar'];
-                header('Location: Principal.php');
+                header('Location: /Public/Principal.php');
                 return; // Termina o script para evitar execução adicional.
             }
         }
@@ -37,7 +37,7 @@ class UserController extends Controller{
                 echo "Registro criado com sucesso!";
                 $stmt->close();
                 $con->close();
-                header("Location: Index.php");
+                header("Location: /../Index.php");
                 return;
             } 
             else 

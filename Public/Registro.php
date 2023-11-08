@@ -1,5 +1,5 @@
 <?php
-require 'Controllers/UserController.php';
+require (__DIR__."/../App/Controllers/UserController.php");
 
 $controlador = new UserController();
 
@@ -12,12 +12,12 @@ $controlador = new UserController();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="assets/img/pills.jpg" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link href="Assets/css/style_front.css" rel="stylesheet">
+    <link href="../Resources/Assets/css/style_front.css" rel="stylesheet">
     <title>Pills - Registro</title>
 </head>
 <body>
     <main >
-      <center><img src="assets/img/pills.jpg"></center>
+      <center><img src="../Resources/Assets/img/pills.jpg"></center>
         <form action="Registro.php" method="post">
           <h1>Criar conta</h1>
           <p>Já possui conta? <a href="index.php">Faça login</a></p>

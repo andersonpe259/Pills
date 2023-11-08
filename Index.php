@@ -1,5 +1,5 @@
 <?php
-require 'Controllers/UserController.php';
+require (__DIR__."/App/Controllers/UserController.php");
 
   $controlador = new UserController();
 
@@ -22,15 +22,15 @@ require 'Controllers/UserController.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="assets/img/pills.jpg" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link href="Assets/css/style_front.css" rel="stylesheet">
+    <link href="Resources/Assets/css/style_front.css" rel="stylesheet">
     <title>Pills - Login</title>
 </head>
 <body>
     <main >
-      <center><img src="assets/img/pills.jpg"></center>
+      <center><img src="Resources/Assets/img/pills.jpg"></center>
         <form action="Index.php" method="post">
           <h1>Login</h1>
-          <p>Não possui conta? <a href="Registro.php">Crie agora</a></p>
+          <p>Não possui conta? <a href="Public/Registro.php">Crie agora</a></p>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">EMAIL</label>
               <center><input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp"></center>

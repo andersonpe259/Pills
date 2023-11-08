@@ -1,7 +1,12 @@
 <?php
 require_once ("foundation/Controller.php");
+require_once (__DIR__."/../App/Procedures/Drawing.php");
 
 class CommentController extends Controller{
+    private $drawing;
+    public function __construct(){
+        $this->drawing = new Drawing();
+    } 
     public function commentPost($idPost, $text){
         $sqlCom = $this->commands->getCommand("commentPost");
         if (isset($_SESSION['user_id']) && $_SESSION['user_id'] !== null) {
@@ -30,28 +35,27 @@ class CommentController extends Controller{
         }
     }
     public function viewComment($idPost){
-        $sqlCom = $this->commands->getCommand("viewComment");
-        $html = $this->commands->getHtml("viewComment");
-        $keywords = $this->commands->getHtml("keyWords-vc");
+        $values = $this->initValues(__FUNCTION__);
         
         $con = $this->conect->conection();
-        $result = $con->prepare($sqlCom[0]);
+        $result = $con->prepare($values['s'][0]);
         $result->bind_param('i', $idPost);
         $result->execute();
         $result = $result->get_result();
         $con->close();
-        if (!$result) {
-            throw new Exception("Erro na consulta");
-        }
-        else{
-            $showHtml = "";
-            // Processar o resultado, se necessário
-            while ($row = mysqli_fetch_assoc($result)) {
-                $rows = [$row['usu_nome'], $row['com_data_comentario'],$row['com_texto']];
-                $showHtml = $showHtml . $this->substituteValues($html[0], $keywords, $rows);
-            }
-            return $showHtml;
-        }
+        $this->drawing->drawing_post($result, $values['h'], $values['k'], __FUNCTION__);
+        // if (!$result) {
+        //     throw new Exception("Erro na consulta");
+        // }
+        // else{
+        //     $showHtml = "";
+        //     // Processar o resultado, se necessário
+        //     while ($row = mysqli_fetch_assoc($result)) {
+        //         $rows = [$row['usu_avatar'], $row['usu_nome'], $row['com_data_comentario'],$row['com_texto']];
+        //         $showHtml = $showHtml . $this->substituteValues($html[0], $keywords, $rows);
+        //     }
+        //     return $showHtml;
+        // }
         
     }
 }

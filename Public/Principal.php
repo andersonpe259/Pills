@@ -1,9 +1,11 @@
 <?php
-require 'Controllers/PostController.php';
-require 'Controllers/PageController.php';
+require (__DIR__."/../App/Controllers/PostController.php");
+
+// require 'Controllers/CommentController.php';
 
 $controlador = new PostController();
-$paginaControlador = new PageController();
+// $controlador2 = new CommentController();
+
 
 $usuario = $_SESSION["user_name"];
 
@@ -21,14 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         //$controlador->commentPost($idPost, $comment);
     }
 }
-include('Controllers/foundation/Layout.php');
+include(__DIR__.'/Layout/Layout.php');
 ?>
   <main class="main">
       <!-- Queria dar um espaçamento nos itens dentro da ul, pois não está similar com o campo acima (os itens estão grudados na paredinha da ul, pode ser que criando uma div e colocando todas as ul's dê certo)-->
       <ul class="posts">
       <li class="newPost">
         <div class="infoUser">
-          <div class="imgUser"><img src="<?php echo $_SESSION["avatar"] ?>" alt=""></div>
+          <div class="imgUser"><img src="<?php echo "../Resources/".$_SESSION["avatar"] ?>" alt=""></div>
           <strong> <?php echo $usuario ?> </strong>
         </div>
 
@@ -46,9 +48,11 @@ include('Controllers/foundation/Layout.php');
         </div>        
         </form>
       </div>
-      <?php $controlador->viewPost() ?>
+      <?php $controlador->viewPost(); 
+            // $controlador2->viewComment(1);
+      ?>
       </ul>
 
   </main>
-  <script src="assets/js/main.js"></script>
+  <script src="../Resources/Assets/js/main.js"></script>
 </body>

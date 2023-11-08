@@ -1,17 +1,6 @@
 <?php
-require 'Conexao.php';
-require 'SqlCommands.php';
 
-class Controller {
-    public $conect;
-    public $commands;
-    
-    public function __construct() {
-        $this->conect = new Conexao();
-        $this->commands = new SqlCommands();
-        session_start();
-    }
-
+class Analyze{
     /**
      * A função substituteValues vai substituir todos os char
      * relacionados à ':' pelo valor da variável passada
@@ -54,7 +43,4 @@ class Controller {
         return $reserved_words;
     }
 
-    
-    }
-    
-
+}
