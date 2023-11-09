@@ -16,7 +16,7 @@ class Drawing{
      * $keywords -> São as palavras "reservadas" do html básico
      * 
      * Como Funciona: 
-     * A função usuará da função substituteValues para substituir as $keywords do $html pelos 
+     * A função usará da função substituteValues para substituir as $keywords do $html pelos 
      * valores de $result, que serão exibidos com o echo.
      */
     public function drawing_post($result, $html, $keywords, $required_row){
@@ -34,11 +34,13 @@ class Drawing{
                             $row['usu_nome'],
                             $row['pos_data_postagem'],
                             $row['pos_conteudo'],
-                            // $this->comentarios->viewComment($row['pos_id'])
                         ];
-                        $showHtml = $this->analyze->substituteValues($html[0], $keywords, $rows);
+                        
+                        $showHtml = $this->analyze->substituteValues($html, $keywords, $rows);
                         echo $showHtml;
+                       
                     }
+                    
                     break;
                     
                 case "tagPost":
@@ -47,7 +49,7 @@ class Drawing{
                             $row["has_id"],
                             $row["has_hashtag"]
                         ];
-                        $showHtml = $this->analyze->substituteValues($html[0], $keywords, $rows);
+                        $showHtml = $this->analyze->substituteValues($html, $keywords, $rows);
                         echo $showHtml;
                     }
                     break;
@@ -60,7 +62,7 @@ class Drawing{
                             $row['com_data_comentario'],
                             $row['com_texto']
                         ];
-                        $showHtml = $this->analyze->substituteValues($html[0], $keywords, $rows);
+                        $showHtml = $this->analyze->substituteValues($html, $keywords, $rows);
                         echo $showHtml;
                     }
                     break;

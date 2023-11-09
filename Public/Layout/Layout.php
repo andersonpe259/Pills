@@ -24,7 +24,6 @@
 
   <!-- Template Main CSS File -->
   <link href="../../Resources/Assets/css/style2.css" rel="stylesheet">
-  <link href="../../Resources/Assets/css/style_3.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: iPortfolio
@@ -38,23 +37,24 @@
 <body>
 
   <!-- ======= Mobile nav toggle button ======= -->
-   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
-   <header id="header">
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
     <div class="d-flex flex-column">
 
       <div class="profile">
         <img src="../../Resources/Assets/img/pills.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="Principal.php">Pills</a></h1>
       </div>
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="Principal.php" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="notifications.html" class="nav-link scrollto"><i class="bx bx-bell"></i> <span>Notificações</span></a></li>
+          <li><a href="principal.php" class="nav-link scrollto"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="notifications.php" class="nav-link scrollto"><i class="bx bx-bell"></i> <span>Notificações</span></a></li>
           <li><a href="Pesquisa.php" class="nav-link scrollto"><i class="bx bx-search"></i> <span>Pesquisar</span></a></li>
-          <li><a href="saves.html" class="nav-link scrollto"><i class="bx bx-bookmark"></i> <span>Salvos</span></a></li>
-          <li><a href="Perfil.php" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Perfil</span></a></li>
+          <li><a href="saves.php" class="nav-link scrollto"><i class="bx bx-bookmark"></i> <span>Salvos</span></a></li>
+          <li><a href="perfil.php" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Perfil</span></a></li>
         </ul>
-      </nav>
+      </nav><!-- .nav-menu -->
     </div>
-  </header>
+  </header><!-- End Header -->

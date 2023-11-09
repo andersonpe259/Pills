@@ -8,7 +8,7 @@ CREATE TABLE tb_usuarios (
     usu_nome VARCHAR(100) NOT NULL,
     usu_email VARCHAR(100) NOT NULL UNIQUE,
     usu_senha VARCHAR(100) NOT NULL,
-    usu_avatar VARCHAR(100) DEFAULT './Assets/img/avatar.jpg',
+    usu_avatar VARCHAR(100) DEFAULT 'avatar.jpg',
     usu_data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 -- insert da tabela usuários

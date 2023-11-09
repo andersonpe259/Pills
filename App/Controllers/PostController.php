@@ -8,7 +8,8 @@ class PostController extends Controller{
     public function userPost($texto){
          // $sqlCom[0] -> insert into tb_posts || $sqlCom[1] -> insert into tb_hashtag || $sqlCom[2] -> insert into tb_hashdosposts
         //Se Não existir nenhum user_id em Session ele não irar rodar
-        $sqlCom = $this->commands->getCommand("userPost");
+        $global_name = __FUNCTION__;
+        $values = $this->initValues($global_name);
 
         if (isset($_SESSION['user_id']) && $_SESSION['user_id'] !== null) {
             /**
@@ -19,7 +20,7 @@ class PostController extends Controller{
              */
             $reservedWords = $this->analyze->analyzeString($texto);  
             $con = $this->conect->conection();
-            $stmt = $con->prepare($sqlCom[0]);
+            $stmt = $con->prepare($values['s'][0]);
 
             if ($stmt) {
                 // Vincula os parâmetros e executa a consulta
@@ -31,7 +32,7 @@ class PostController extends Controller{
                     if($reservedWords["#"] != null){
                         for($i = 0; $i < count($reservedWords["#"]); $i++){
                             $existe = false;
-                            $result = mysqli_query($con, $sqlCom[2]);
+                            $result = mysqli_query($con, $values['s'][2]);
 
                             if(!$result){
                                 throw new Exception("Erro na consulta");
@@ -40,18 +41,18 @@ class PostController extends Controller{
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     if($row["has_hashtag"] == $reservedWords["#"][$i]){
                                         //Se a hashtag já estiver cadastrada, então só vai adicionar o id em hashdosPosts
-                                        $hash = $con->prepare($sqlCom[3]);
+                                        $hash = $con->prepare($values['s'][3]);
                                         $hash->bind_param("ii", $row["has_id"], $id);
                                         $hash->execute();
                                         $existe = true;
                                     }
                                 }
                                 if($existe == false){
-                                    $hash = $con->prepare($sqlCom[1]);
+                                    $hash = $con->prepare($values['s'][1]);
                                     $hash->bind_param("s", $reservedWords["#"][$i]);
                                     $hash->execute();
                                     $id_hash = mysqli_insert_id($con);
-                                    $hashCon = $con->prepare($sqlCom[3]);
+                                    $hashCon = $con->prepare($values['s'][3]);
                                     $hashCon->bind_param("ii", $id_hash, $id);
                                     $hashCon->execute();
                                 }
@@ -76,6 +77,7 @@ class PostController extends Controller{
 
 
     public function viewPost($filtro = 0, $tag = 0){
+        $draw = $this->drawing;
         //Simplificação para chamar a variável
         $f = $filtro;
         $t = $tag;
@@ -88,17 +90,13 @@ class PostController extends Controller{
             case 0:
             case 1:
 
-               $result = mysqli_query(
-                $con,
-                $values['s'][$f]
-                );
+               $result = mysqli_query($con, $values['s'][$f]);
 
-                $this->drawing->drawing_post(
+                $draw->drawing_post(
                     $result,
                     $values['h'][0],
                     $values['k'],
                     $global_name, 
-                    
                 );
                 
                     // Fechar conexão quando terminar
@@ -112,14 +110,12 @@ class PostController extends Controller{
                 $result->bind_param('i', $t);
                 $result->execute();
                 $result = $result->get_result();
-                $this->drawing->drawing_post($result, $values['h'][0], $values['k'], 
-                $global_name);
+                $this->drawing->drawing_post($result, $values['h'][0], $values['k'], $global_name);
                 }
                 else{
                     $con = $this->conect->conection();
                     $result = mysqli_query($con, $values['s'][3]);
-                    $this->drawing->drawing_post($result, $values['h'][0], $values['k'],
-                    $global_name);
+                    $this->drawing->drawing_post($result, $values['h'][0], $values['k'], $global_name);
                 }
                 $con->close();
                 break;
@@ -136,7 +132,7 @@ class PostController extends Controller{
             $values['s'][0]
         );
 
-        $this->drawing->drawing_post($result, $values['h'], $values['k'], $global_name);
+        $this->drawing->drawing_post($result, $values['h'][0], $values['k'], $global_name);
              
         }
     }

@@ -23,14 +23,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $extensao = strtolower(pathinfo($nome_arquivo, PATHINFO_EXTENSION));
         if (in_array($extensao, $extensoes_permitidas)) {
             // Diretório de destino para salvar a imagem
-            $diretorio_destino = "./Assets/img/perfil/";
+            $diretorio_destino = "../Resources/Assets/img/perfil/";
             
             // Renomeie o arquivo para evitar conflitos de nome
-            $caminho_destino = $diretorio_destino . $_SESSION['user_id'] . "." . $extensao;
+            $imgSave = $_SESSION['user_id'] . "." . $extensao;
+            $caminho_destino = $diretorio_destino . $imgSave;
+
             
             if (move_uploaded_file($nome_temporario, $caminho_destino)) {
                 echo "A imagem foi carregada com sucesso.";
-                $userEdit->editarAvatar($_SESSION['user_id'], $caminho_destino);
+                $userEdit->editarAvatar($_SESSION['user_id'], $imgSave);
                 $_SESSION['avatar'] = $caminho_destino;
             } else {
                 echo "Erro ao carregar a imagem.";
@@ -46,31 +48,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 include(__DIR__.'/Layout/Layout.php');
 
 ?>
-<div class="perfil_div">
-    <div class="img_fundo">
-        <img src="./Assets/img/perfil/generico01.svg" alt="">
-    </div>
+    <main class="main">
 
-    <form action="Perfil.php" method="post" enctype="multipart/form-data">
-        Selecione uma imagem de perfil:
-        <input type="file" name="imagem" accept="image/*">
-        <input type="submit" value="Enviar Imagem">
-    </form>
+    <div class="informacoes">
+      <div class="fundo"> 
+        <img src="../Resources/Assets/img/fundo_perfil/generico01.svg">
+      </div>
+      
+      <div class="imgperfil ">
+      <?php echo '<img src="'.$_SESSION['avatar'].'" alt="">' ?>
+      <div class="editar">
+        <button>Editar perfil</button>
+      </div>
+      </div>
 
-    <div class="avatar">
-        <?php echo '<img src="'.$_SESSION['avatar'].'" alt="">' ?>
-        
-    </div>
-    <div class="info_pessoal">
-        <h2><?php echo $_SESSION['user_name']?></h2>
-        <h4>@Usuario</h4>
+      
 
-        <p><span></span> Seguindo             <span></span> Seguidores</p>
+      <div class="dados"> 
+        <h3> <?php echo $_SESSION['user_name']?> </h3>
+        <a class="arroba"><span>@Usuario</span></a>
+      </div>
 
-        
+      <div class="infoseguidores">
+        <p><h5>753</h5>Seguindo</p>
+        <p><h5>127K</h5>Seguidores</p>
+      </div>
+
     </div>
     <ul class="posts">
             <?php $controlador->viewPost() ?>
     </ul>
 </div>
+</main>
 
+
+</body>

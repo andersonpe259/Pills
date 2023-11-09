@@ -1,7 +1,9 @@
 <?php
 require (__DIR__."/../App/Controllers/PostController.php");
 
+
 $controlador = new PostController();
+
 
 if($_SERVER["REQUEST_METHOD"] === "GET") {
     $_SESSION["search"] = "";
@@ -29,23 +31,23 @@ include(__DIR__.'/Layout/Layout.php');
 ?>
 
 <main id="main">
-  <div class="busca">
+<div class="busca">
     <div class="pesquisa">
+      <div class="barra">
         <form action="Pesquisa.php" method="post">
-            <button><i class=" bx bx-search"></i></button>
-            <input type="text" name="search" id="post" placeholder="pesquisar"> 
+          <button><i class=" bx bx-search"></i></button>      
+          <input type="text" name="search" id="post" placeholder="pesquisar">
         </form>
-    </div>
-    
-    <div class="pesqFiltro">
-    <form method="post" action="Pesquisa.php">
-      <ul>
-        <li><button class="btnbusca" type="submit" name="filtro" value="1"><span>EM ALTA</span></button></li>
-        <li><button class="btnbusca" type="submit" name="filtro" value="2"><span>TAGS</span></button></li>
-        <li><button class="btnbusca" type="submit" name="filtro" value="3"><span>CONTAS</span></button></li>
-      </ul>
-    </form>
-    </div>
+      </div>
+      <div class="pesqFiltro d-flex">
+        <form method="post" action="Pesquisa.php">
+          <button class="btnbusca" type="submit" name="filtro" value="1"><span>EM ALTA</span></button>
+          <button class="btnbusca" type="submit" name="filtro" value="2"><span>TAGS</span></button>
+          <button class="btnbusca" type="submit" name="filtro" value="3"><span>CONTAS</span></button>
+        </form>
+      </div>
+  
+  </div>  
 
   <ul class="posts">
 <?php

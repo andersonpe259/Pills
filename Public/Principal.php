@@ -1,10 +1,9 @@
 <?php
 require (__DIR__."/../App/Controllers/PostController.php");
-
-// require 'Controllers/CommentController.php';
+require (__DIR__."/../App/Controllers/CommentController.php");
 
 $controlador = new PostController();
-// $controlador2 = new CommentController();
+$teste = new CommentController();
 
 
 $usuario = $_SESSION["user_name"];
@@ -48,9 +47,7 @@ include(__DIR__.'/Layout/Layout.php');
         </div>        
         </form>
       </div>
-      <?php $controlador->viewPost(); 
-            // $controlador2->viewComment(1);
-      ?>
+      <?php $controlador->viewPost(); ?>
       </ul>
 
   </main>
