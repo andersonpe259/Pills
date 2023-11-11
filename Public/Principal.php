@@ -29,7 +29,7 @@ include(__DIR__.'/Layout/Layout.php');
       <ul class="posts">
       <li class="newPost">
         <div class="infoUser">
-          <div class="imgUser"><img src="<?php echo "../Resources/".$_SESSION["avatar"] ?>" alt=""></div>
+          <div class="imgUser"><img src="<?php echo "../Storage/perfil/".$_SESSION["avatar"] ?>" alt=""></div>
           <strong> <?php echo $usuario ?> </strong>
         </div>
 

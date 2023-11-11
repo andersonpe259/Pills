@@ -52,11 +52,11 @@ include(__DIR__.'/Layout/Layout.php');
 
     <div class="informacoes">
       <div class="fundo"> 
-        <img src="../Resources/Assets/img/fundo_perfil/generico01.svg">
+        <img src="../Storage/fundo/generico01.svg">
       </div>
       
       <div class="imgperfil ">
-      <?php echo '<img src="'.$_SESSION['avatar'].'" alt="">' ?>
+      <?php echo '<img src="../Storage/perfil/'.$_SESSION['avatar'].'" alt="">' ?>
       <div class="editar">
         <button>Editar perfil</button>
       </div>

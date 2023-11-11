@@ -36,7 +36,7 @@ class SqlCommands{
         "viewPost" => [
             "<li class='post'>
                 <div class='infoUserPost'>
-                    <div class='imgUserPost'><img src='../Resources/Assets/img/perfil/#avatar#' alt=''></div>
+                    <div class='imgUserPost'><img src='../Storage/perfil/#avatar#' alt=''></div>
                     <div class='nameAndHour'>
                         <strong>#nome#</strong>
                         <p>#data#</p>
