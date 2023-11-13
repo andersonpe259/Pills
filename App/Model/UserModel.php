@@ -38,4 +38,23 @@ class UserModel extends Model{
         }
         $con->close();
     }
+
+    public function updateAvatar($newAvatar, $userId){
+        $con = $this->conect->conection();
+        $query = "UPDATE tb_usuarios SET usu_avatar = ? WHERE usu_id = ?";
+        $stmt = $con->prepare($query);
+        if ($stmt) {
+            $stmt->bind_param("si", $newAvatar, $userId);
+            $stmt->execute();   
+        } else {
+            throw new Exception("Erro: " . $con->error);
+        }
+        $con->close();
+    }
+
+    public function updateImgPerfil($newAvatar, $userId){
+        $con = $this->conect->conection();
+        $query = "UPDATE tb_usuarios SET usu_imgPerfil = ? WHERE usu_id = ?";
+        $this->genericInsert($con, $query, "si", $newAvatar, $userId);
+    }
 }

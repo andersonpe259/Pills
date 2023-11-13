@@ -1,9 +1,3 @@
-<?php
-// require (__DIR__."/../App/Controllers/UserController.php");
-
-// $controlador = new UserController();
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,20 +30,5 @@
             <center><button type="submit" class="btn btn-primary"><a href="" class="principal">Registrar</a></button></center>
           </form>
     </main>  
-    
-    <?php
-            // if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            //     // Obtenha os dados do formulário
-            //     $nome = $_POST["nome"];
-            //     $email = $_POST["email"];
-            //     $senha = $_POST["password"];
-
-            //     if($nome != null and $email != null and $senha != null){
-            //         $controlador->userRegister($nome, $email, $senha);
-            //     }
-            // }
-            
-            
-        ?>
 </body>
 </html>

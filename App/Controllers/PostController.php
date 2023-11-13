@@ -45,8 +45,10 @@ class PostController extends Controller{
         $posts = $postModel->getPost("viewPost");
         $comments = $postModel->getComment();
         
+        
         include (__DIR__."/../../Public/Principal.php");
     }
+
     public function tagPost(){
         $global_name = __FUNCTION__;
         $values = $this->initValues($global_name);
