@@ -49,11 +49,11 @@
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="principal.php" class="nav-link scrollto"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="notifications.php" class="nav-link scrollto"><i class="bx bx-bell"></i> <span>Notificações</span></a></li>
-          <li><a href="Pesquisa.php" class="nav-link scrollto"><i class="bx bx-search"></i> <span>Pesquisar</span></a></li>
-          <li><a href="saves.php" class="nav-link scrollto"><i class="bx bx-bookmark"></i> <span>Salvos</span></a></li>
-          <li><a href="perfil.php" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Perfil</span></a></li>
+          <li><a href="Index.php?route=principal" class="nav-link scrollto"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="Index.php?route=notifications" class="nav-link scrollto"><i class="bx bx-bell"></i> <span>Notificações</span></a></li>
+          <li><a href="Index.php?route=pesquisa" class="nav-link scrollto"><i class="bx bx-search"></i> <span>Pesquisar</span></a></li>
+          <li><a href="Index.php?route=saves" class="nav-link scrollto"><i class="bx bx-bookmark"></i> <span>Salvos</span></a></li>
+          <li><a href="Index.php?route=perfil" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Perfil</span></a></li>
         </ul>
       </nav><!-- .nav-menu -->
     </div>

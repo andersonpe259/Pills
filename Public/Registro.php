@@ -1,7 +1,7 @@
 <?php
-require (__DIR__."/../App/Controllers/UserController.php");
+// require (__DIR__."/../App/Controllers/UserController.php");
 
-$controlador = new UserController();
+// $controlador = new UserController();
 
 ?>
 
@@ -18,7 +18,7 @@ $controlador = new UserController();
 <body>
     <main >
       <center><img src="../Resources/Assets/img/pills.jpg" id = "main"></center>
-        <form action="Registro.php" method="post">
+        <form action="Index.php?route=registro" method="post">
         <h1 class="title">Criar conta</h1>
           <p>Já possui conta? <a href="../Index.php">Faça login</a></p>
             <div class="mb-3">
@@ -38,16 +38,16 @@ $controlador = new UserController();
     </main>  
     
     <?php
-            if ($_SERVER["REQUEST_METHOD"] === "POST") {
-                // Obtenha os dados do formulário
-                $nome = $_POST["nome"];
-                $email = $_POST["email"];
-                $senha = $_POST["password"];
+            // if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            //     // Obtenha os dados do formulário
+            //     $nome = $_POST["nome"];
+            //     $email = $_POST["email"];
+            //     $senha = $_POST["password"];
 
-                if($nome != null and $email != null and $senha != null){
-                    $controlador->userRegister($nome, $email, $senha);
-                }
-            }
+            //     if($nome != null and $email != null and $senha != null){
+            //         $controlador->userRegister($nome, $email, $senha);
+            //     }
+            // }
             
             
         ?>

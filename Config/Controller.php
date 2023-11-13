@@ -1,6 +1,6 @@
 <?php
-require (__DIR__."/Conexao.php");
-require (__DIR__."/../Database/SqlCommands.php");
+require_once (__DIR__."/Conexao.php");
+require_once (__DIR__."/../Database/SqlCommands.php");
 require_once (__DIR__."/../App/Procedures/Analyze.php");
 require_once (__DIR__."/../App/Procedures/Drawing.php");
 

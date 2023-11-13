@@ -1,52 +1,82 @@
 <?php
 require_once (__DIR__."/../../Config/Controller.php");
-
+require_once (__DIR__.'/../Model/UserModel.php');
+require_once (__DIR__.'/../Model/PostModel.php');
 class UserController extends Controller{
 
-    public function userLogin($email, $senha) {
-        //se ainda não começou a session.
-        $query = "SELECT * FROM tb_usuarios";
-        $result = mysqli_query($this->conect->conection(), $query);
-
-        // Processar o resultado, se necessário
-        while ($row = mysqli_fetch_assoc($result)) {
-            if ($email == $row['usu_email'] && $senha == $row['usu_senha']) {
-                $_SESSION['user_id'] = $row['usu_id'];
-                $_SESSION['user_name'] = $row['usu_nome'];
-                $_SESSION['avatar'] = $row['usu_avatar'];
-                header('Location: /Public/Principal.php');
-                return; // Termina o script para evitar execução adicional.
-            }
-        }
-        // Fechar conexão após o loop.
-        $this->conect->conection()->close();
+    public function showLogin(){
+        include (__DIR__."/../../Public/Login.php");
     }
 
-    public function userRegister($nome, $email, $senha){
-        // prepared statements para evitar SQL injection
-        $query = "INSERT INTO tb_usuarios (usu_nome, usu_email, usu_senha) VALUES (?, ?, ?)";
-        $con = $this->conect->conection();
-        $stmt = $con->prepare($query);
+    public function processLogin() {
+        $userModel = new UserModel();
+        $users = $userModel->getUsers();
+        $email = "";
+        $senha = "";
 
-        // Verifica se a preparação da consulta foi bem-sucedida
-        if ($stmt) {
-            // Vincula os parâmetros e executa a consulta
-            $stmt->bind_param("sss", $nome, $email, $senha);
-            if ($stmt->execute()) 
-            {
-                echo "Registro criado com sucesso!";
-                $stmt->close();
-                $con->close();
-                header("Location: /../Index.php");
-                return;
-            } 
-            else 
-            {
-                throw new Exception("Erro: " . $con->error);
+        if(isset($_POST['email']) && isset($_POST['password'])){
+            $email = $_POST['email'];
+            $senha = $_POST['password'];
+
+            foreach($users as $user=>$value){
+                if ($email == $value['usu_email'] && $senha == $value['usu_senha']) {
+                    $_SESSION['user_id'] = $value['usu_id'];
+                    $_SESSION['user_name'] = $value['usu_nome'];
+                    $_SESSION['avatar'] = $value['usu_avatar'];
+                    header('Location: Index.php?route=principal');
+                    return; // Termina o script para evitar execução adicional.
+                }
             }
-        } else {
-            throw new Exception("Erro: " . $con->error);
+            header('Location: Index.php?route=login');
+            return;
+        }  
+        
+    }
+    public function showRegister(){
+        include (__DIR__."/../../Public/Registro.php");
+    }
+    public function processRegister(){
+        // prepared statements para evitar SQL injection
+        $userModel = new UserModel();
+        
+        $nome = "";
+        $email = "";
+        $senha = "";
+
+        if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['nome'])){
+            $nome = $_POST['nome'];
+            $email = $_POST['email'];
+            $senha = $_POST['password'];
+
+            $userModel->insertUsers($nome, $email, $senha);
+            header('Location: Index.php?route=login');
+            return;
         }
+           
+    }
+    public function showPerfil(){
+        $id = $_SESSION['user_id'];
+        $userModel = new UserModel();
+        $users = $userModel->getUsers();
+        $user = [
+            'nome' => "",
+            'avatar' => "",
+            'imgPerfil' => "",
+            'email' => ""
+        ];
+        foreach($users as $u => $value){
+            if($value['usu_id'] == $id){
+                $user['nome'] = $value['usu_nome'];
+                $user['avatar'] = $value['usu_avatar'];
+                $user['imgPerfil'] = $value['usu_imgPerfil'];
+                $user['email'] = $value['usu_email'];
+            }
+        }
+        
+        $postModel = new PostModel();
+        $usersPosts = $postModel->getPostById("viewPost", 1, $id);
+
+        include (__DIR__."/../../Public/Perfil.php");
     }
 
     public function editarAvatar($id, $avatar) {
