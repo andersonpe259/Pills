@@ -26,9 +26,6 @@ class SearchController extends Controller{
             $tag = $_POST['tag'];
             $this->viewPost($option, true, true, $tag);//Em Tags com filtro
         }
-
-            
-          
             header('Location: Index.php?route=principal');
             return;
         }

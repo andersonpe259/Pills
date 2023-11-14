@@ -30,6 +30,12 @@ class SqlCommands{
         ],
         "tagPost" => [
             "SELECT has_id, has_hashtag FROM tb_hashtag;"
+        ],
+        "savePost" => [
+            "INSERT INTO tb_salvarpost (sal_usu_id, sal_pos_id) VALUES (?, ?);"
+        ],
+        "viewSave" => [
+            "SELECT pos_id, pos_conteudo, usu_nome, usu_avatar, pos_data_postagem FROM tb_usuarios INNER JOIN tb_salvarpost ON usu_id = sal_usu_id INNER JOIN tb_posts ON sal_pos_id = pos_id WHERE sal_usu_id = ?;"
         ]
 
     );

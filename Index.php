@@ -44,7 +44,14 @@ switch ($route) {
         
         break;
       case 'perfil':
-        $userController->showPerfil();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+          $userController->processPerfil();
+        } else{
+          $userController->showPerfil();
+        }
+        break;
+        case 'saves':
+          $postController->viewSave();
 
 
     // case 'usuario':

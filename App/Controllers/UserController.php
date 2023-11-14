@@ -79,24 +79,53 @@ class UserController extends Controller{
         include (__DIR__."/../../Public/Perfil.php");
     }
 
-    public function editarAvatar($id, $avatar) {
-        $query = "UPDATE tb_usuarios SET usu_avatar = ? WHERE usu_id = ?";
-        $con = $this->conect->conection();
-        $stmt = $con->prepare($query);
+    public function processPerfil() {
+        $userModel = new UserModel();
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $this->upImg("perfil", $userModel);
+        
+        $this->upImg("fundo", $userModel);
+
+        header('Location: Index.php?route=perfil');
+        return;
+    }
+}
+
+    public function upImg($type, $userModel){
+        if(isset($_FILES[$type]) && $_FILES[$type]["error"] == UPLOAD_ERR_OK){
+            $nome_temporario = $_FILES[$type]["tmp_name"];
+            $nome_arquivo = basename($_FILES[$type]["name"]);
+            
+            // Verifique se o arquivo é uma imagem
+            $extensoes_permitidas = array("jpg", "jpeg", "png", "gif", "svg");
+            $extensao = strtolower(pathinfo($nome_arquivo, PATHINFO_EXTENSION));
+            if (in_array($extensao, $extensoes_permitidas)) {
+                // Diretório de destino para salvar a imagem
+                $diretorio_destino = "Storage/$type/";
+                
+                // Renomeie o arquivo para evitar conflitos de nome
+                $imgSave = $_SESSION['user_id'] . "." . $extensao;
+                $caminho_destino = $diretorio_destino . $imgSave;
     
-        if ($stmt) {
-            $stmt->bind_param("si", $avatar, $id);
-            if ($stmt->execute()) {
-                echo "Registro editado com sucesso!";
-                $stmt->close();
-                $con->close();
+                
+                if (move_uploaded_file($nome_temporario, $caminho_destino)) {
+                    echo "A imagem foi carregada com sucesso.";
+                    $userModel->updateAvatar($imgSave, $_SESSION['user_id']);
+                    if($type == "perfil"){
+                        $_SESSION['avatar'] = $imgSave;
+                    }
+                } else {
+                    echo "Erro ao carregar a imagem.";
+                }
             } else {
-                throw new Exception("Erro: " . $con->error);
+                echo "Apenas arquivos de imagem (jpg, jpeg, png, gif) são permitidos.";
             }
         } else {
-            throw new Exception("Erro: " . $con->error);
+            echo "Erro ao processar o upload da imagem.";
         }
     }
+       
     
 
 }

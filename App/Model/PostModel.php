@@ -23,6 +23,31 @@ class PostModel extends Model{
             return $rows;
         }
     }
+
+    public function getPostSave($id){
+
+        $con = $this->conect->conection();//Conexão com o banco
+        $query = $this->query->getCommand("viewSave");
+        $result = $con->prepare($query[0]);
+        $result->bind_param('i', $id);
+        $result->execute();
+
+        if (!$result) {
+            throw new Exception("Erro na consulta");
+        }
+        else{
+            $result = $result->get_result();
+            //Processar o resultado, se necessário
+            $rows = array();
+            $i = 0;
+            while ($row = mysqli_fetch_assoc($result)) {
+                $rows[$i] = $row;
+                $i++;
+            }
+            return $rows;
+        }
+    }
+
     public function getPostByID($base, $indice, $id){
 
         $con = $this->conect->conection();//Conexão com o banco
@@ -64,6 +89,23 @@ class PostModel extends Model{
         $con->close();
 
         return $id;
+    }
+
+    public function insertSave($idUser, $idPost){
+        $con = $this->conect->conection();//Conexão com o banco
+        $query = $this->query->getCommand("savePost");
+        $stmt = $con->prepare($query[0]);
+        if ($stmt) {
+            // Vincula os parâmetros e executa a consulta
+            $stmt->bind_param("ii", $idUser, $idPost);
+            $stmt->execute();
+        
+        } else {
+            throw new Exception("Erro: " . $con->error);
+        }
+        
+        $con->close();
+
     }
 
     public function insertHashtag($hashtag){

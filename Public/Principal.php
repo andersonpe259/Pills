@@ -61,8 +61,10 @@ include(__DIR__.'/Layout/Layout.php');
               </div>
           </div>
           <button type='button' class='filepost'><i class='bi bi-send' alt='compartilhar'></i></button>
-          <button type='button' class='filepost'><i class='bi bi-bookmark' alt='salvar'></i></button>
-        </div>
+          <form action="Index.php?route=principal" method="POST">
+            <button type='submit' class='filepost' name='salvar' value='<?= $value['pos_id'];?>'><i class='bi bi-bookmark' alt='salvar'></i></button>
+          </form>
+          </div>
 
         </li>
 <?php endforeach; ?>
