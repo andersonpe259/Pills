@@ -68,7 +68,7 @@ class UserController extends Controller{
             if($value['usu_id'] == $id){
                 $user['nome'] = $value['usu_nome'];
                 $user['avatar'] = $value['usu_avatar'];
-                $user['imgPerfil'] = $value['usu_imgPerfil'];
+                $user['imgPerfil'] = $value['usu_img_fundo'];
                 $user['email'] = $value['usu_email'];
             }
         }

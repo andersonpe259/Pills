@@ -26,7 +26,7 @@ class SqlCommands{
         "viewComment" => [
             "SELECT com_pos_id, usu_avatar, com_texto, usu_nome, com_data_comentario FROM tb_comentarios 
                                             LEFT JOIN tb_posts ON com_pos_id = pos_id
-                                            LEFT JOIN tb_usuarios on com_usu_id = usu_id;"
+                                            LEFT JOIN tb_usuarios on com_usu_id = usu_id WHERE com_pos_id = ?;"
         ],
         "tagPost" => [
             "SELECT has_id, has_hashtag FROM tb_hashtag;"

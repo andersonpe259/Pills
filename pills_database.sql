@@ -9,6 +9,7 @@ CREATE TABLE tb_usuarios (
     usu_email VARCHAR(100) NOT NULL UNIQUE,
     usu_senha VARCHAR(100) NOT NULL,
     usu_avatar VARCHAR(100) DEFAULT 'avatar.jpg',
+    usu_img_fundo VARCHAR(100) DEFAULT 'generico.svg',
     usu_data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 -- insert da tabela usuários
@@ -29,6 +30,18 @@ INSERT INTO tb_posts (pos_usu_id, pos_conteudo) VALUES
 (1, 'Ta Bunitu Heim!'),
 (2, 'And I need coffee');
 
+-- Tabela de Posts Salvos Pelo Usuário 
+CREATE TABLE tb_salvarpost (
+  sal_id INT AUTO_INCREMENT PRIMARY KEY, 
+  sal_usu_id INT NOT NULL,
+  sal_pos_id INT NOT NULL,
+  foreign key (sal_usu_id) references tb_usuarios(usu_id),
+  foreign key (sal_pos_id) references tb_posts(pos_id)
+  );
+
+-- Insert na tabela salvarpost
+insert into tb_salvarpost (sal_usu_id, sal_pos_id) values (1, 1);
+  
 -- create da tabela comentários
 CREATE TABLE tb_comentarios (
     com_id INT AUTO_INCREMENT PRIMARY KEY,

@@ -161,15 +161,33 @@ class PostModel extends Model{
             return $rows;
         }
     }
-
-    public function getComment(){
+    public function insertComment($texto, $idUser, $idPost){
+        $con = $this->conect->conection();//Conexão com o banco
+        $query = $this->query->getCommand("commentPost");
+        $stmt = $con->prepare($query[0]);
+        if ($stmt) {
+            // Vincula os parâmetros e executa a consulta
+            $stmt->bind_param("iis", $idUser, $idPost, $texto);
+            $stmt->execute();
+        
+        } else {
+            throw new Exception("Erro: " . $con->error);
+        }
+        $con->close();
+        
+    }
+    public function getComment($idPost){
         $con = $this->conect->conection();//Conexão com o banco
         $query = $this->query->getCommand("viewComment");
-        $result = mysqli_query($con, $query[0]);
+        $result = $con->prepare($query[0]);
+        $result->bind_param('i', $idPost);
+        $result->execute();
+
         if (!$result) {
             throw new Exception("Erro na consulta");
         }
         else{
+            $result = $result->get_result();
             //Processar o resultado, se necessário 
             $rows = array();
             $i = 0;

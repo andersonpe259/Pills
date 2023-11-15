@@ -16,8 +16,6 @@ include(__DIR__.'/Layout/Layout.php');
         
         <div class="iconsAndButton">
           <div class="icons">
-            <a class="btnFileForm"><i class="bi bi-image" alt="Adicionar uma imagem"></i></a>
-            <a class="btnFileForm"><i  class="bi bi-camera-video" alt="Adicionar um vídeo"></i></a>
             <a class="btnFileForm"><i class="bi bi-emoji-smile"  alt="Adicionar um emoji"></i></a>
           </div>
 
@@ -26,6 +24,7 @@ include(__DIR__.'/Layout/Layout.php');
         </form>
       </div>
 <?php foreach($posts as $post=>$value): ?>
+  <?php $comments = $postModel->getComment($value['pos_id']); ?>
       <li class='post'>
                 <div class='infoUserPost'>
                     <div class='imgUserPost'><img src="../Storage/perfil/<?= $value['usu_avatar']; ?>" alt=''></div>
@@ -39,27 +38,29 @@ include(__DIR__.'/Layout/Layout.php');
                 </p>
         
                 <div class='actionBtnPost'>
-          <button type='button' class='filepost'><i class='bi bi-heart' alt='curtir'></i></button>
-          <button type='button' class='filepost openModal' data-modal='modal1'><i class='bi bi-chat' alt='comentar'></i></button>
-          <div class='modal' id='modal1'>
+          
+          <button type='button' class='filepost openModal' data-modal='modal<?= $value['pos_id'] ?>'><i class='bi bi-chat' alt='comentar'></i></button>
+          
+          <div class='modal' id='modal<?= $value['pos_id'] ?>'>
               <div class='modal-content'>
                 <span class='close'>&times;</span>
                   <h2>Comentários</h2>
-                  <?php foreach($comments as $comment=>$item):?>
-                    <h1>Id comentario: <?= $item["com_pos_id"] ?></h1>
-                    <h1>Id Post: <?= $value["pos_id"] ?></h1>
-                    <?php if($item["com_pos_id"] == $value["pos_id"]) : ?>
-                      <h5><?= $item["usu_nome"]; ?></h5>
-                      <p><?= $item["com_texto"]; ?></p>  
-                    <?php endif; ?>  
+                
+                  <?php foreach($comments as $comment => $item): ?>
+                    <h5><?= $item['usu_nome']; ?></h5>
+                    <p><?= $item['com_texto']; ?></p>  
                   <?php endforeach; ?>
-                  <h5>Ana Júlia</h5>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                  <div class='seu-comentario'>
-                    <input type='text' name='nome' placeholder='Digite seu comentário'><button type='submit' class='btnSubmitForm coment'>Enviar</button>
-                  </div>     
+
+                  
+                  <form action="Index.php?route=principal" method="POST">
+                    <div class='seu-comentario'>
+                      <input type='text' name='comentario' placeholder='Digite seu comentário'><button type='submit' class='btnSubmitForm coment' name='idPost' value='<?= $value['pos_id'] ?>'>Enviar</button>
+                    </div>
+                  </form>
+                       
               </div>
           </div>
+
           <button type='button' class='filepost'><i class='bi bi-send' alt='compartilhar'></i></button>
           <form action="Index.php?route=principal" method="POST">
             <button type='submit' class='filepost' name='salvar' value='<?= $value['pos_id'];?>'><i class='bi bi-bookmark' alt='salvar'></i></button>
