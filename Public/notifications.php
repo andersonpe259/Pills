@@ -4,58 +4,56 @@
         <strong>Notificações</strong>
     </div>
 
-    <ul class="notifications">
-        <li class="notification ">
-            <div class="notUser">
-                <div class="notInfoUser">
-                    <div class="notImgUser">  </div>
-                        <strong>Jussara</strong>
-                   
+    <ul class="posts">
+<?php foreach($posts as $post=>$value): ?>
+  <?php $comments = $postModel->getComment($value['pos_id']); ?>
+      <li class='post'>
+                <div class='infoUserPost'>
+                    <div class='imgUserPost'><img src="../Storage/perfil/<?= $value['post_avatar']; ?>" alt=''></div>
+                    <div class='nameAndHour'>
+                        <strong><?= $value['criador_post'];?></strong> <p>Compartilhado por <?= $value['sender_name']; ?></p>
+                        <p><?= $value['pos_data_postagem']; ?></p>
+                    </div>
                 </div>
-            </div>
-            <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.
-              </p>
-        </li>
+                <p>
+                <?= $value['pos_conteudo']; ?>
+                </p>
+        
+                <div class='actionBtnPost'>
+          
+          <button type='button' class='filepost openModal' data-modal='modal<?= $value['pos_id'] ?>'><i class='bi bi-chat' alt='comentar'></i></button>
+          
+          <div class='modal' id='modal<?= $value['pos_id'] ?>'>
+              <div class='modal-content'>
+                <span class='close'>&times;</span>
+                  <h2>Comentários</h2>
+                
+                  <?php foreach($comments as $comment => $item): ?>
+                    <h5><?= $item['usu_nome']; ?></h5>
+                    <p><?= $item['com_texto']; ?></p>  
+                  <?php endforeach; ?>
 
-        <li class="notification ">
-            <div class="notUser">
-                <div class="notInfoUser">
-                    <div class="notImgUser">  </div>
-                        <strong>Charlos</strong>
-                   
-                </div>
-            </div>
-            <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.
-              </p>
-        </li>
+                  
+                  <form action="Index.php?route=notifications" method="POST">
+                    <div class='seu-comentario'>
+                      <input type='text' name='comentario' placeholder='Digite seu comentário'><button type='submit' class='btnSubmitForm coment' name='idPost' value='<?= $value['pos_id'] ?>'>Enviar</button>
+                    </div>
+                  </form>
+                       
+              </div>
+          </div>
 
-        <li class="notification ">
-            <div class="notUser">
-                <div class="notInfoUser">
-                    <div class="notImgUser">  </div>
-                        <strong>Risco</strong>
-                   
-                </div>
-            </div>
-            <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.
-              </p>
-        </li>
+          
+          <form action="Index.php?route=notifications" method="POST">
+            <button type='submit' class='filepost' name='salvar' value='<?= $value['pos_id'];?>'><i class='bi bi-bookmark' alt='salvar'></i></button>
+          </form>
+          </div>
 
-        <li class="notification ">
-            <div class="notUser">
-                <div class="notInfoUser">
-                    <div class="notImgUser">  </div>
-                        <strong>Lagartixa</strong>
-                   
-                </div>
-            </div>
-            <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.
-              </p>
         </li>
-    </ul>
+<?php endforeach; ?>
+      </ul>
+
 
 </main>
+<script src="../Resources/Assets/js/main.js"></script>
+</body>

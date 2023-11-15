@@ -79,6 +79,8 @@ public function processSave(){
         
         include (__DIR__."/../../Public/Principal.php");
     }
+
+    
    public function viewSave(){
         $postModel = new PostModel();
         $id = $_SESSION["user_id"];

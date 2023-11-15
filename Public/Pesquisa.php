@@ -9,13 +9,15 @@ include(__DIR__.'/Layout/Layout.php');
         <button><i class=" bx bx-search"></i></button>      
         <input type="text" placeholder="pesquisar">
       </div>
-      <div class="pesqFiltro d-flex">
+      
       <form method="POST" action="Index.php?route=pesquisa">
+        <div class="pesqFiltro d-flex">
           <button class="btnbusca" type="submit" name="filtro" value="0"><span>EM ALTA</span></button>
           <button class="btnbusca" type="submit" name="filtro" value="1"><span>TAGS</span></button>
           <button class="btnbusca" type="submit" name="filtro" value="2"><span>CONTAS</span></button>
-      </form>
       </div>
+    </form>
+      
       <?php if($showtag):  ?>
       <div class='sugestoes'>
         <ul>

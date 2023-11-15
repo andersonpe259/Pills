@@ -3,10 +3,12 @@
 require_once (__DIR__."/App/Controllers/UserController.php");
 require_once (__DIR__."/App/Controllers/PostController.php");
 require_once (__DIR__."/App/Controllers/SearchController.php");
+require_once (__DIR__."/App/Controllers/NotificationController.php");
 
 $postController = new PostController();
 $userController = new UserController();
 $searchController = new SearchController();
+$notiController = new NotificationController();
 
 $route = $_GET['route'] ?? 'login';
 
@@ -50,8 +52,17 @@ switch ($route) {
           $userController->showPerfil();
         }
         break;
-        case 'saves':
-          $postController->viewSave();
+      case 'saves':
+        $postController->viewSave();
+        break;
+      case 'notifications':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+          $notiController->processRequest();
+        } else{
+          $notiController->viewPost();
+        }
+        break;
+        
 
 
     // case 'usuario':

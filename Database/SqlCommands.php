@@ -36,6 +36,9 @@ class SqlCommands{
         ],
         "viewSave" => [
             "SELECT pos_id, pos_conteudo, usu_nome, usu_avatar, pos_data_postagem FROM tb_usuarios INNER JOIN tb_salvarpost ON usu_id = sal_usu_id INNER JOIN tb_posts ON sal_pos_id = pos_id WHERE sal_usu_id = ?;"
+        ],
+        "viewNotification" => [
+            "SELECT po.pos_id, po.pos_data_postagem, cp.cpo_id, us1.usu_avatar AS send_avatar, us3.usu_avatar AS post_avatar, us1.usu_nome AS sender_name, us2.usu_nome AS receiver_name, cp.cpo_pos_id, po.pos_conteudo, us3.usu_nome AS criador_post FROM tb_compartilharpost cp JOIN tb_usuarios us1 ON cp.cpo_ususend_id = us1.usu_id JOIN tb_usuarios us2 ON cp.cpo_usureceive_id = us2.usu_id JOIN tb_posts po ON cp.cpo_pos_id = po.pos_id JOIN tb_usuarios us3 ON po.pos_usu_id = us3.usu_id WHERE cp.cpo_usureceive_id = ?;"
         ]
 
     );

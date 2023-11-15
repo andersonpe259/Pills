@@ -41,7 +41,20 @@ CREATE TABLE tb_salvarpost (
 
 -- Insert na tabela salvarpost
 insert into tb_salvarpost (sal_usu_id, sal_pos_id) values (1, 1);
-  
+
+-- Tabela de Posts compartilhados 
+CREATE TABLE tb_compartilharpost (
+  cpo_id INT AUTO_INCREMENT PRIMARY KEY, 
+  cpo_ususend_id INT NOT NULL,
+  cpo_usureceive_id INT NOT NULL,
+  cpo_pos_id INT NOT NULL,
+  foreign key (cpo_ususend_id) references tb_usuarios(usu_id),
+  foreign key (cpo_usureceive_id) references tb_usuarios(usu_id),
+  foreign key (cpo_pos_id) references tb_posts(pos_id)
+  );
+
+-- Insert na tabela compartilharpost
+insert into tb_compartilharpost (cpo_ususend_id, cpo_usureceive_id, cpo_pos_id) values (1, 2, 1); 
 -- create da tabela comentários
 CREATE TABLE tb_comentarios (
     com_id INT AUTO_INCREMENT PRIMARY KEY,
