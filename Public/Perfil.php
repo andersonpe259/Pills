@@ -14,8 +14,8 @@ include(__DIR__.'/Layout/Layout.php');
       <div class="imgperfil">
       <img src="../../Storage/perfil/<?= $user['avatar']; ?>">  
       <div class="actionBtnPost editar">
-            <button type="button" class="filepost openModal editar" data-modal="modal1">Editar perfil</button>
-            <div class="modal" id="modal1">
+            <button type="button" class="filepost openModal editar" data-modal="modal0">Editar perfil</button>
+            <div class="modal" id="modal0">
                 <div class="modal-content">
                 <span class="close">&times;</span>
                 <form method="POST" enctype="multipart/form-data" action="Index.php?route=perfil"> 
@@ -45,36 +45,51 @@ include(__DIR__.'/Layout/Layout.php');
 
     <ul class="posts">
 
-    <?php foreach($usersPosts as $post => $value):?>
-      <li class="post">
-        <div class="infoUserPost">
-            <div class="nameAndHour">
-              <p><?= $value['pos_data_postagem']; ?></p>
-            </div>
-        </div>
-
-        <p>
-          <?= $value['pos_conteudo']; ?>
-      </p>
-
-        <div class="actionBtnPost">
-          <button type="button" class="filepost openModal" data-modal="modal1"><i class="bi bi-chat" alt="comentar"></i></button>
-          <div class="modal" id="modal1">
-              <div class="modal-content">
-                <span class="close">&times;</span>
+    <?php foreach($usersPosts as $post=>$value): ?>
+  <?php $comments = $postModel->getComment($value['pos_id']); ?>
+      <li class='post'>
+                <div class='infoUserPost'>
+                    <div class='imgUserPost'><img src="../Storage/perfil/<?= $value['usu_avatar']; ?>" alt=''></div>
+                    <div class='nameAndHour'>
+                        <strong><?= $value['usu_nome'];?></strong>
+                        <p><?= $value['pos_data_postagem']; ?></p>
+                    </div>
+                </div>
+                <p>
+                <?= $value['pos_conteudo']; ?>
+                </p>
+        
+                <div class='actionBtnPost'>
+          
+          <button type='button' class='filepost openModal' data-modal='modal<?= $value['pos_id'] ?>'><i class='bi bi-chat' alt='comentar'></i></button>
+          
+          <div class='modal' id='modal<?= $value['pos_id'] ?>'>
+              <div class='modal-content'>
+                <span class='close'>&times;</span>
                   <h2>Comentários</h2>
-                  <h5>Wallison</h5>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                  <h5>Anderson</h5>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                  <div class="seu-comentario">
-                    <input type="text" name="nome" placeholder="Digite seu comentário"><button type="submit" class="btnSubmitForm">Enviar</button>
-                  </div>     
+                
+                  <?php if($comments != null): ?>
+                  <?php foreach($comments as $comment => $item): ?>
+                    <h5><?= $item['usu_nome']; ?></h5>
+                    <p><?= $item['com_texto']; ?></p>  
+                  <?php endforeach; ?>
+                <?php else: ?>
+                  <h5>Tenha coragem e faça o primeiro comentário do Post</h5>
+                <?php endif; ?>
+
+                  
+                  <form action="Index.php?route=perfil" method="POST">
+                    <div class='seu-comentario'>
+                      <input type='text' name='comentario' placeholder='Digite seu comentário'><button type='submit' class='btnSubmitForm coment' name='idPost' value='<?= $value['pos_id'] ?>'>Enviar</button>
+                    </div>
+                  </form>
+                       
               </div>
+                  </div>
           </div>
-        </div>
-      </li>
-    <?php endforeach; ?>
+
+        </li>
+<?php endforeach; ?>
 
   </ul>
   </main>

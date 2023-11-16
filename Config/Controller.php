@@ -13,7 +13,10 @@ class Controller {
         $this->commands = new SqlCommands();
         $this->analyze = new Analyze();
         $this->drawing = new Drawing();
-        session_start();
+        
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
     }
 
     

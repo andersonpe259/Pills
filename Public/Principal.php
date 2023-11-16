@@ -45,12 +45,14 @@ include(__DIR__.'/Layout/Layout.php');
               <div class='modal-content'>
                 <span class='close'>&times;</span>
                   <h2>Comentários</h2>
-                
+                <?php if($comments != null): ?>
                   <?php foreach($comments as $comment => $item): ?>
                     <h5><?= $item['usu_nome']; ?></h5>
                     <p><?= $item['com_texto']; ?></p>  
                   <?php endforeach; ?>
-
+                <?php else: ?>
+                  <h5>Tenha coragem e faça o primeiro comentário do Post</h5>
+                <?php endif; ?>
                   
                   <form action="Index.php?route=principal" method="POST">
                     <div class='seu-comentario'>
@@ -60,8 +62,8 @@ include(__DIR__.'/Layout/Layout.php');
                        
               </div>
           </div>
-
-          <button type='button' class='filepost'><i class='bi bi-send' alt='compartilhar'></i></button>
+          
+          <button type='submit' class='filepost' name='compartilhar'><i class='bi bi-send' alt='compartilhar'></i></button>
           <form action="Index.php?route=principal" method="POST">
             <button type='submit' class='filepost' name='salvar' value='<?= $value['pos_id'];?>'><i class='bi bi-bookmark' alt='salvar'></i></button>
           </form>

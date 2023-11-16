@@ -131,6 +131,22 @@ class PostModel extends Model{
         $con->close();
 
     }
+    public function insertCompartilhar($idUserSend, $idPost, $idUserReceive){
+        $con = $this->conect->conection();//Conexão com o banco
+        $query = $this->query->getCommand("insertNotification");
+        $stmt = $con->prepare($query[0]);
+        if ($stmt) {
+            // Vincula os parâmetros e executa a consulta
+            $stmt->bind_param("iii", $idUserSend, $idUserReceive, $idPost);
+            $stmt->execute();
+        
+        } else {
+            throw new Exception("Erro: " . $con->error);
+        }
+        
+        $con->close();
+
+    }
 
     public function insertHashtag($hashtag){
         $con = $this->conect->conection();//Conexão com o banco

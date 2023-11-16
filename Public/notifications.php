@@ -5,6 +5,7 @@
     </div>
 
     <ul class="posts">
+      <?php if($posts != null): ?>
 <?php foreach($posts as $post=>$value): ?>
   <?php $comments = $postModel->getComment($value['pos_id']); ?>
       <li class='post'>
@@ -51,6 +52,9 @@
 
         </li>
 <?php endforeach; ?>
+<?php else: ?>
+  <h1>Sem notificações no momento...</h1>
+<?php endif; ?>
       </ul>
 
 

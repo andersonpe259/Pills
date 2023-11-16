@@ -81,15 +81,27 @@ class UserController extends Controller{
 
     public function processPerfil() {
         $userModel = new UserModel();
+        $postModel = new PostModel();
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $this->upImg("perfil", $userModel);
-        
-        $this->upImg("fundo", $userModel);
 
-        header('Location: Index.php?route=perfil');
-        return;
+            $this->upImg("perfil", $userModel);
+            
+            $this->upImg("fundo", $userModel);
+
+        if(isset($_POST['comentario']) && isset($_POST['idPost'])){
+            $texto = $_POST['comentario'];
+            $idPost = $_POST['idPost'];
+            $idUser = $_SESSION['user_id'];
+
+            $postModel->insertComment($texto, $idUser, $idPost);
+
+            header('Location: Index.php?route=perfil');
+            return;
+        }
     }
+
+    
 }
 
     public function upImg($type, $userModel){
@@ -124,8 +136,9 @@ class UserController extends Controller{
         } else {
             echo "Erro ao processar o upload da imagem.";
         }
-    }
-       
-    
 
+        header('Location: Index.php?route=perfil');
+        return;
+    }
+    
 }
