@@ -16,7 +16,7 @@ class SqlCommands{
             "SELECT pos_id, pos_conteudo, usu_nome, usu_avatar, pos_data_postagem FROM tb_posts LEFT JOIN tb_usuarios ON pos_usu_id = usu_id WHERE pos_usu_id = ? ORDER BY pos_data_postagem DESC;",
          ],
         "searchPost" => [
-            "SELECT pos_id, pos_conteudo, usu_nome, usu_avatar, GROUP_CONCAT(has_hashtag) AS hashtags, GROUP_CONCAT(has_id) AS has_ids, pos_data_postagem FROM tb_posts LEFT JOIN tb_usuarios ON pos_usu_id = usu_id LEFT JOIN tb_comentarios ON com_pos_id = pos_id LEFT JOIN tb_hashdosposts ON hdp_pos_id = pos_id LEFT JOIN tb_hashtag ON hdp_has_id = has_id GROUP BY pos_id, pos_conteudo, usu_nome, usu_avatar, pos_data_postagem ORDER BY com_id DESC, pos_data_postagem DESC;",
+            "SELECT pos_id, pos_conteudo, usu_nome, usu_avatar, GROUP_CONCAT(has_hashtag) AS hashtags, GROUP_CONCAT(has_id) AS has_ids, pos_data_postagem FROM tb_posts LEFT JOIN tb_usuarios ON pos_usu_id = usu_id LEFT JOIN tb_comentarios ON com_pos_id = pos_id INNER JOIN tb_hashdosposts ON hdp_pos_id = pos_id INNER JOIN tb_hashtag ON hdp_has_id = has_id GROUP BY pos_id, pos_conteudo, usu_nome, usu_avatar, pos_data_postagem ORDER BY com_id DESC, pos_data_postagem DESC;",
             "SELECT pos_id, pos_conteudo, usu_nome, usu_avatar, GROUP_CONCAT(has_hashtag) AS hashtags, GROUP_CONCAT(has_id) AS has_ids, pos_data_postagem FROM tb_posts LEFT JOIN tb_usuarios ON pos_usu_id = usu_id JOIN tb_hashdosposts ON hdp_pos_id = pos_id LEFT JOIN tb_hashtag ON hdp_has_id = has_id GROUP BY pos_id, pos_conteudo, usu_nome, usu_avatar, pos_data_postagem ORDER BY pos_data_postagem DESC ;",
             "SELECT pos_id, pos_conteudo, usu_nome, usu_avatar, has_hashtag AS hashtags, has_id AS has_ids, pos_data_postagem FROM tb_posts LEFT JOIN tb_usuarios ON pos_usu_id = usu_id JOIN tb_hashdosposts ON hdp_pos_id = pos_id LEFT JOIN tb_hashtag ON hdp_has_id = has_id WHERE has_id = ? ORDER BY pos_data_postagem DESC ;"
         ],
@@ -42,6 +42,12 @@ class SqlCommands{
         ],
         "insertNotification" => [
             "INSERT INTO tb_compartilharpost (cpo_ususend_id, cpo_usureceive_id, cpo_pos_id) VALUES (?, ?, ?); "
+        ],
+        "deletePost" => [
+            "DELETE FROM tb_posts WHERE pos_id= ?;"
+        ],
+        "deleteSalvar" => [
+            "DELETE FROM tb_compartilharpost WHERE cpo_pos_id = ?;"
         ]
 
     );

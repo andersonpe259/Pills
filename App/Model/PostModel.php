@@ -201,6 +201,7 @@ class PostModel extends Model{
             return $rows;
         }
     }
+
     public function insertComment($texto, $idUser, $idPost){
         $con = $this->conect->conection();//Conexão com o banco
         $query = $this->query->getCommand("commentPost");
@@ -239,6 +240,36 @@ class PostModel extends Model{
         }
 
     }
+    public function deletePost($idPost){
+        $con = $this->conect->conection();//Conexão com o banco
+        $query = $this->query->getCommand("deletePost");
+        $stmt = $con->prepare($query[0]);
+        if ($stmt) {
+            // Vincula os parâmetros e executa a consulta
+            $stmt->bind_param("i", $idPost);
+            $stmt->execute();
+        
+        } else {
+            throw new Exception("Erro: " . $con->error);
+        }
+        $con->close();
+    }
+
+    public function deleteSalvar($idPost){
+        $con = $this->conect->conection();//Conexão com o banco
+        $query = $this->query->getCommand("deleteSalvar");
+        $stmt = $con->prepare($query[0]);
+        if ($stmt) {
+            // Vincula os parâmetros e executa a consulta
+            $stmt->bind_param("i", $idPost);
+            $stmt->execute();
+        
+        } else {
+            throw new Exception("Erro: " . $con->error);
+        }
+        $con->close();
+    }
+
 
     public function getTags(){
         $con = $this->conect->conection();//Conexão com o banco

@@ -63,18 +63,5 @@ switch ($route) {
         }
         break;
         
-
-
-    // case 'usuario':
-    //     $userController = new UserController();
-    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //         $userController->processForm();
-    //     } else {
-    //         $userController->showUsuario();
-    //     }
-    //     break;
-    // default:
-    //     echo "Rota inválida";
-    //     break;
 }
 ?>

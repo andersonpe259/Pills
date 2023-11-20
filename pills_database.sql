@@ -6,16 +6,19 @@ USE db_pills;
 CREATE TABLE tb_usuarios (
     usu_id INT AUTO_INCREMENT PRIMARY KEY,
     usu_nome VARCHAR(100) NOT NULL,
+    usu_nome_usuario VARCHAR(50) NOT NULL,
     usu_email VARCHAR(100) NOT NULL UNIQUE,
     usu_senha VARCHAR(100) NOT NULL,
     usu_avatar VARCHAR(100) DEFAULT 'avatar.jpg',
     usu_img_fundo VARCHAR(100) DEFAULT 'generico.svg',
-    usu_data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    usu_data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT chk_usu_nome_usuario_no_spaces CHECK (usu_nome_usuario NOT LIKE '% %')
 );
+
 -- insert da tabela usuários
-INSERT INTO tb_usuarios (usu_nome, usu_email, usu_senha) VALUES
-('Udsu', 'udsu@exemplo.com.br', 'A141414'),
-('Joarlitwosson', 'joarli2son@exemplo.com.br', 'G232323');
+INSERT INTO tb_usuarios (usu_nome, usu_nome_usuario, usu_email, usu_senha) VALUES
+('Udsu', 'udsu', 'udsu@exemplo.com.br', 'A141414'),
+('Joarlitwosson', 'joarli2son', 'joarli2son@exemplo.com.br', 'G232323');
 
 -- create da tabela posts
 CREATE TABLE tb_posts (
@@ -100,3 +103,58 @@ CREATE TABLE tb_hashdosposts (
   );
 insert into tb_hashdosposts (hdp_has_id, hdp_pos_id) values (1, 1);
 -- selects que podem vir a usar(verificar se serão criados no php mesmo ou não)
+
+-- Criação do Trigger para evitar a repetição de emails iguais e nomes de usuario iguais no banco.
+
+DELIMITER //
+CREATE TRIGGER before_insert_tb_usuarios
+BEFORE INSERT ON tb_usuarios FOR EACH ROW
+BEGIN
+    DECLARE username_count INT;
+    DECLARE email_count INT;
+
+    -- Verifica se o nome de usuário já existe na tabela
+    SELECT COUNT(*) INTO username_count
+    FROM tb_usuarios
+    WHERE usu_nome_usuario = NEW.usu_nome_usuario;
+
+    -- Verifica se o e-mail já existe na tabela
+    SELECT COUNT(*) INTO email_count
+    FROM tb_usuarios
+    WHERE usu_email = NEW.usu_email;
+
+    -- Se o nome de usuário ou e-mail já existirem, gera um erro
+    IF username_count > 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Este nome de usuário já está cadastrado';
+    END IF;
+
+    IF email_count > 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Este e-mail já está cadastrado';
+    END IF;
+END;
+//
+DELIMITER ;
+
+-- Criação do Trigger e ações para quando o usuário deletar um post.
+DELIMITER //
+CREATE TRIGGER after_delete_tb_posts
+BEFORE DELETE ON tb_posts FOR EACH ROW
+BEGIN
+    -- Deletar entradas da tabela tb_compartilharpost associadas ao post deletado
+    DELETE FROM tb_compartilharpost WHERE cpo_pos_id = OLD.pos_id;
+
+    -- Deletar entradas da tabela tb_comentarios associadas ao post deletado
+    DELETE FROM tb_comentarios WHERE com_pos_id = OLD.pos_id;
+
+    -- Deletar entradas da tabela tb_hashdosposts associadas ao post deletado,
+    -- exceto se outras entradas ainda estiverem usando a mesma tag
+    DELETE FROM tb_hashdosposts
+    WHERE hdp_pos_id = OLD.pos_id;
+
+END;
+//
+DELIMITER ;
+
+

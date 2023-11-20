@@ -99,6 +99,14 @@ class UserController extends Controller{
             header('Location: Index.php?route=perfil');
             return;
         }
+        if(isset($_POST['apagar'])){
+            $idPost = $_POST['apagar'];
+
+            $postModel->deletePost($idPost);
+
+            header('Location: Index.php?route=perfil');
+            return;
+        }
     }
 
     

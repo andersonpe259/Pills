@@ -85,7 +85,10 @@
                 <form action="Index.php?route=<?= $route ?>" method="POST">
                     <button type='submit' class='filepost' name='salvar' value='<?= $value['pos_id'];?>'><i class='bi bi-bookmark' alt='salvar'></i></button>
                 </form>
-
+            <?php elseif($route == 'perfil'): ?>
+              <form action="Index.php?route=<?= $route ?>" method="POST">
+                    <button type='submit' class='filepost' name='apagar' value='<?= $value['pos_id'];?>'><i class='bi bi-trash' alt=''></i></button>
+                </form>
             <?php endif; ?>
           </div>
 
