@@ -23,54 +23,7 @@ include(__DIR__.'/Layout/Layout.php');
         </div>        
         </form>
       </div>
-<?php foreach($posts as $post=>$value): ?>
-  <?php $comments = $postModel->getComment($value['pos_id']); ?>
-      <li class='post'>
-                <div class='infoUserPost'>
-                    <div class='imgUserPost'><img src="../Storage/perfil/<?= $value['usu_avatar']; ?>" alt=''></div>
-                    <div class='nameAndHour'>
-                        <strong><?= $value['usu_nome'];?></strong>
-                        <p><?= $value['pos_data_postagem']; ?></p>
-                    </div>
-                </div>
-                <p>
-                <?= $value['pos_conteudo']; ?>
-                </p>
-        
-                <div class='actionBtnPost'>
-          
-          <button type='button' class='filepost openModal' data-modal='modal<?= $value['pos_id'] ?>'><i class='bi bi-chat' alt='comentar'></i></button>
-          
-          <div class='modal' id='modal<?= $value['pos_id'] ?>'>
-              <div class='modal-content'>
-                <span class='close'>&times;</span>
-                  <h2>Comentários</h2>
-                <?php if($comments != null): ?>
-                  <?php foreach($comments as $comment => $item): ?>
-                    <h5><?= $item['usu_nome']; ?></h5>
-                    <p><?= $item['com_texto']; ?></p>  
-                  <?php endforeach; ?>
-                <?php else: ?>
-                  <h5>Tenha coragem e faça o primeiro comentário do Post</h5>
-                <?php endif; ?>
-                  
-                  <form action="Index.php?route=principal" method="POST">
-                    <div class='seu-comentario'>
-                      <input type='text' name='comentario' placeholder='Digite seu comentário'><button type='submit' class='btnSubmitForm coment' name='idPost' value='<?= $value['pos_id'] ?>'>Enviar</button>
-                    </div>
-                  </form>
-                       
-              </div>
-          </div>
-          
-          <button type='submit' class='filepost' name='compartilhar'><i class='bi bi-send' alt='compartilhar'></i></button>
-          <form action="Index.php?route=principal" method="POST">
-            <button type='submit' class='filepost' name='salvar' value='<?= $value['pos_id'];?>'><i class='bi bi-bookmark' alt='salvar'></i></button>
-          </form>
-          </div>
-
-        </li>
-<?php endforeach; ?>
+        <?php include(__DIR__."/Layout/PostStructure.php"); ?>
       </ul>
 
   </main>

@@ -39,6 +39,7 @@ class SearchController extends Controller{
             $posts = $postModel->getPostById("searchPost", 2, $id);
         }
         
+        
         $tags = $postModel->getTags();
         $showtag = $tagbar;
            

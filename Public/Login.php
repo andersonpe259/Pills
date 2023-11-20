@@ -1,20 +1,3 @@
-<?php
-// require (__DIR__."/App/Controllers/UserController.php");
-
-//   $controlador = new UserController();
-
-//   if ($_SERVER["REQUEST_METHOD"] === "POST") {
-//     // Obtenha os dados do formulário
-//     $email = $_POST["email"];
-//     $password = $_POST["password"];
-
-//     if($email != null and $password != null){
-//         $controlador->userLogin($email, $password);
-//     }
-// }
-
-?> 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,6 +1,7 @@
 <?php
 require_once (__DIR__.'/../../Config/Controller.php');
 require_once (__DIR__.'/../Model/PostModel.php');
+require_once (__DIR__.'/../Model/UserModel.php');
 // require_once ("CommentController.php");
 
 
@@ -58,6 +59,16 @@ class PostController extends Controller{
             header('Location: Index.php?route=principal');
             return;
         }
+
+        if(isset($_POST['marcar']) && isset($_POST['idPost'])){
+            $idUserSend = $_SESSION['user_id'];
+            $idUserReceive = $_POST['marcar'];
+            $idPost = $_POST['idPost'];
+            $postModel->insertCompartilhar($idUserSend, $idPost, $idUserReceive);
+            
+            header('Location: Index.php?route=principal');
+            return;
+        }
 }
 public function processSave(){
     $postModel = new PostModel();  
@@ -75,7 +86,9 @@ public function processSave(){
 }
     public function viewPost(){
         $postModel = new PostModel();
+        $userModel = new UserModel();
         $posts = $postModel->getPost("viewPost");
+        $users = $userModel->getUsers();
         
         include (__DIR__."/../../Public/Principal.php");
     }

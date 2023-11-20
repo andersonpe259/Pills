@@ -19,8 +19,8 @@ class Analyze{
         // return $text;
     }
     
-    public function analyzeString($post){
-        $split_post = explode(" ", $post);
+    public function analyzeString($post, $search = " "){
+        $split_post = explode($search, $post);
         //Limite minímo de letras para considerar a # ou @ como válido
         $limit = 2;
         $reserved_words = array(

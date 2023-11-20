@@ -74,7 +74,7 @@ class UserController extends Controller{
         }
         
         $postModel = new PostModel();
-        $usersPosts = $postModel->getPostById("viewPost", 1, $id);
+        $posts = $postModel->getPostById("viewPost", 1, $id);
 
         include (__DIR__."/../../Public/Perfil.php");
     }
