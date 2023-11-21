@@ -156,5 +156,23 @@ BEGIN
 END;
 //
 DELIMITER ;
+DELIMITER //
+CREATE TRIGGER before_insert_tb_salvarpost
+BEFORE INSERT ON tb_salvarpost FOR EACH ROW
+BEGIN
+    DECLARE count_records INT;
 
+    -- Verifica se o sal_pos_id já existe na tabela tb_salvarpost
+    SELECT COUNT(*) INTO count_records
+    FROM tb_salvarpost
+    WHERE sal_pos_id = NEW.sal_pos_id AND sal_usu_id = NEW.sal_usu_id;
+
+    -- Se já existir, gera um erro
+    IF count_records > 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Este post já foi salvo pelo usuário';
+    END IF;
+END;
+//
+DELIMITER ;
 

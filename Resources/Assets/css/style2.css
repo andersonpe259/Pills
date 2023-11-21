@@ -18,6 +18,10 @@ div.seu-comentario button{
   background-color: #FCDA4D;
   color: #040b14;
 }
+.conteudo_comment{
+  height: 500px; 
+  overflow: auto;
+}
 
 .modal {
   color: white;
@@ -28,6 +32,13 @@ div.seu-comentario button{
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
+}
+.hidden{
+  display: none;
+}
+
+#listaRecomendacoes{
+  list-style-type: none;
 }
 
 .modal input{

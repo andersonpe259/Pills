@@ -54,7 +54,14 @@ class PostController extends Controller{
         if(isset($_POST['salvar'])){
             $idPost = $_POST['salvar'];
             $idUser = $_SESSION['user_id'];
-            $postModel->insertSave($idUser, $idPost); //Envia o texto para o banco e pega o id do post recem criado
+            try{
+                $postModel->insertSave($idUser, $idPost); //Envia o texto para o banco e pega o id do post recem criado
+            }
+            catch(Exception $e){
+                header('Location: Index.php?route=principal');
+                return;
+            }
+            
             
             header('Location: Index.php?route=principal');
             return;
@@ -78,11 +85,31 @@ public function processSave(){
     if(isset($_POST['salvar'])){
         $idPost = $_POST['salvar'];
         $idUser = $_SESSION['user_id'];
-        $postModel->insertSave($idUser, $idPost); //Salva os ids do Usuário e do Post na tabela
+        try{
+            $postModel->insertSave($idUser, $idPost); //Envia o texto para o banco e pega o id do post recem criado
+        }
+        catch(Exception $e){
+            header('Location: Index.php?route=principal');
+            return;
+        } //Salva os ids do Usuário e do Post na tabela
 
         header('Location: Index.php?route=principal');
         return;
     }
+}
+
+public function processDeleteSave(){
+    $postModel = new PostModel();
+
+    if(isset($_POST['apagar'])){
+        $idPost = $_POST['apagar'];
+
+        $postModel->deleteSalvar($idPost);
+
+        header('Location: Index.php?route=saves');
+        return;
+    
+}
 }
     public function viewPost(){
         $postModel = new PostModel();

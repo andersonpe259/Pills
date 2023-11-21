@@ -28,4 +28,24 @@ include(__DIR__.'/Layout/Layout.php');
 
   </main>
   <script src="../Resources/Assets/js/main.js"></script>
+  <script>
+  function filtrarLista() {
+    var filtro = document.getElementById('filtroInput').value.toLowerCase();
+
+
+    var listaRecomendacoes = document.getElementById('listaRecomendacoes').getElementsByTagName('li');
+
+    for (var i = 0; i < listaRecomendacoes.length; i++) {
+      var conteudoItem = listaRecomendacoes[i].textContent.toLowerCase();
+      
+      if (conteudoItem.includes(filtro)) {
+        listaRecomendacoes[i].classList.remove('hidden');
+      } else {
+        listaRecomendacoes[i].classList.add('hidden');
+      }
+    }
+  }
+
+  document.getElementById('filtroInput').addEventListener('input', filtrarLista);
+</script>
 </body>

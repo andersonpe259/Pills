@@ -269,6 +269,20 @@ class PostModel extends Model{
         }
         $con->close();
     }
+    public function deleteCompartilhado($idPost){
+        $con = $this->conect->conection();//Conexão com o banco
+        $query = $this->query->getCommand("deleteCompartilhado");
+        $stmt = $con->prepare($query[0]);
+        if ($stmt) {
+            // Vincula os parâmetros e executa a consulta
+            $stmt->bind_param("i", $idPost);
+            $stmt->execute();
+        
+        } else {
+            throw new Exception("Erro: " . $con->error);
+        }
+        $con->close();
+    }
 
 
     public function getTags(){

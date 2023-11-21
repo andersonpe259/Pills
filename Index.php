@@ -5,6 +5,9 @@ require_once (__DIR__."/App/Controllers/PostController.php");
 require_once (__DIR__."/App/Controllers/SearchController.php");
 require_once (__DIR__."/App/Controllers/NotificationController.php");
 
+error_reporting(0);
+ini_set('display_errors', 0);
+
 $postController = new PostController();
 $userController = new UserController();
 $searchController = new SearchController();
@@ -53,7 +56,11 @@ switch ($route) {
         }
         break;
       case 'saves':
-        $postController->viewSave();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+          $postController->processDeleteSave();
+        } else{
+          $postController->viewSave();
+        }
         break;
       case 'notifications':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

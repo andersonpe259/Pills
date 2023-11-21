@@ -38,15 +38,17 @@
             <div class='modal' id='modal<?= $value['pos_id'] ?>'>
               <div class='modal-content'>
                 <span class='close'>&times;</span>
-                  <h2>Comentários</h2>
+                <h2>Comentários</h2>
                 <?php if($comments != null): ?>
+                <div class="conteudo_comment">
                   <?php foreach($comments as $comment => $item): ?>
                     <h5><?= $item['usu_nome']; ?></h5>
                     <p><?= $item['com_texto']; ?></p>  
                   <?php endforeach; ?>
-                <?php else: ?>
-                  <h5>Tenha coragem e faça o primeiro comentário do Post</h5>
-                <?php endif; ?>
+                </div>
+                  <?php else: ?>
+                    <h5>Tenha coragem e faça o primeiro comentário do Post</h5>
+                  <?php endif; ?>
                 
                   <form action="Index.php?route=<?= $route ?>" method="POST">
                     <div class='seu-comentario'>
@@ -64,13 +66,18 @@
                         <h2>Usuários</h2>
                         <form action="Index.php?route=<?= $route ?>" method="POST">
                             <input type="hidden" name="idPost" value="<?= $value['pos_id'] ?>">
-                        <?php foreach($users as $user => $item): ?>
-                            <button type='submit' class='filepost' name='marcar' value='<?= $item['usu_id'];?>'><h5><?= $item['usu_nome']; ?></h5></button>
-                        <?php endforeach; ?>
+                            <ul id="listaRecomendacoes">
+                              <?php foreach($users as $user => $item): ?>
+                                <li class="post-item">
+                                  <button type='submit' class='filepost' name='marcar' value='<?= $item['usu_id'];?>'><h5><?= $item['usu_nome']; ?></h5></button>
+                                </li> 
+                              <?php endforeach; ?>
+                            </ul>
+                        
                         </form>   
                         <form action="Index.php?route=<?= $route ?>" method="POST">
                             <div class='seu-comentario'>
-                            <input type='text' name='comentario' placeholder='Digite seu comentário'><button type='submit' class='btnSubmitForm coment' name='idPost' value='<?= $value['pos_id'] ?>'>Enviar</button>
+                            <input type='text' name='comentario' placeholder='Digite seu comentário' id="filtroInput">
                             </div>
                         </form>     
                     </div>
@@ -84,6 +91,9 @@
 
                 <form action="Index.php?route=<?= $route ?>" method="POST">
                     <button type='submit' class='filepost' name='salvar' value='<?= $value['pos_id'];?>'><i class='bi bi-bookmark' alt='salvar'></i></button>
+                </form>
+                <form action="Index.php?route=<?= $route ?>" method="POST">
+                    <button type='submit' class='filepost' name='apagar' value='<?= $value['pos_id'];?>'><i class='bi bi-eye' alt='salvar'></i></button>
                 </form>
             <?php elseif($route == 'perfil'): ?>
               <form action="Index.php?route=<?= $route ?>" method="POST">

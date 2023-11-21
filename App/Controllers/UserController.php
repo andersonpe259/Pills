@@ -111,6 +111,7 @@ class UserController extends Controller{
 
     
 }
+    
 
     public function upImg($type, $userModel){
         if(isset($_FILES[$type]) && $_FILES[$type]["error"] == UPLOAD_ERR_OK){
