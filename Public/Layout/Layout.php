@@ -54,6 +54,7 @@
           <li><a href="Index.php?route=pesquisa" class="nav-link scrollto"><i class="bx bx-search"></i> <span>Pesquisar</span></a></li>
           <li><a href="Index.php?route=saves" class="nav-link scrollto"><i class="bx bx-bookmark"></i> <span>Salvos</span></a></li>
           <li><a href="Index.php?route=perfil" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Perfil</span></a></li>
+          <li><a href="Index.php" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Sair</span></a></li>
         </ul>
       </nav><!-- .nav-menu -->
     </div>
