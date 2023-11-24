@@ -106,37 +106,6 @@ insert into tb_hashdosposts (hdp_has_id, hdp_pos_id) values (1, 1);
 
 -- Criação do Trigger para evitar a repetição de emails iguais e nomes de usuario iguais no banco.
 
-DELIMITER //
-CREATE TRIGGER before_insert_tb_usuarios
-BEFORE INSERT ON tb_usuarios FOR EACH ROW
-BEGIN
-    DECLARE username_count INT;
-    DECLARE email_count INT;
-
-    -- Verifica se o nome de usuário já existe na tabela
-    SELECT COUNT(*) INTO username_count
-    FROM tb_usuarios
-    WHERE usu_nome_usuario = NEW.usu_nome_usuario;
-
-    -- Verifica se o e-mail já existe na tabela
-    SELECT COUNT(*) INTO email_count
-    FROM tb_usuarios
-    WHERE usu_email = NEW.usu_email;
-
-    -- Se o nome de usuário ou e-mail já existirem, gera um erro
-    IF username_count > 0 THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Este nome de usuário já está cadastrado';
-    END IF;
-
-    IF email_count > 0 THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Este e-mail já está cadastrado';
-    END IF;
-END;
-//
-DELIMITER ;
-
 -- Criação do Trigger e ações para quando o usuário deletar um post.
 DELIMITER //
 CREATE TRIGGER after_delete_tb_posts
