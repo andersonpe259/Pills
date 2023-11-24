@@ -1,5 +1,4 @@
 # Pills
-TESTE
 Desenvolvimento da Prática Profissional dos alunos de Informática para Internet 2V 2020. 
 
 Para Executar o projeto siga os seguintes passos:
