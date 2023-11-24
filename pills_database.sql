@@ -152,6 +152,9 @@ BEGIN
     -- exceto se outras entradas ainda estiverem usando a mesma tag
     DELETE FROM tb_hashdosposts
     WHERE hdp_pos_id = OLD.pos_id;
+    
+    DELETE FROM tb_salvarpost
+    WHERE sal_pos_id = OLD.pos_id;
 
 END;
 //
