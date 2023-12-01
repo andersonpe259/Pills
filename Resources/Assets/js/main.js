@@ -34,10 +34,6 @@ modalButtons.forEach(function(button) {
 });
 
 
-
-
-
-
 (function() {
   "use strict";
 

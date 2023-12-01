@@ -12,13 +12,10 @@ include(__DIR__.'/Layout/Layout.php');
         </div>
 
         <form class="formPost" id="formPost" action="Index.php?route=principal" method="POST">
-          <textarea name="textarea" placeholder="O que você está pensando?"> </textarea>
+          <textarea name="textarea" placeholder="No que você está pensando?"></textarea>
         
-        <div class="iconsAndButton">
-          <div class="icons">
-            <a class="btnFileForm"><i class="bi bi-emoji-smile"  alt="Adicionar um emoji"></i></a>
-          </div>
-
+        <div class="iconsAndButton">  
+          <div class="spacer"></div>      
           <button type="submit" class="btnSubmitForm">Publicar</button>
         </div>        
         </form>
@@ -28,6 +25,8 @@ include(__DIR__.'/Layout/Layout.php');
 
   </main>
   <script src="../Resources/Assets/js/main.js"></script>
+
+
   <script>
   function filtrarLista() {
     var filtro = document.getElementById('filtroInput').value.toLowerCase();
@@ -48,4 +47,5 @@ include(__DIR__.'/Layout/Layout.php');
 
   document.getElementById('filtroInput').addEventListener('input', filtrarLista);
 </script>
+
 </body>

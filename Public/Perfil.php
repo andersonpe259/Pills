@@ -2,7 +2,7 @@
 include(__DIR__.'/Layout/Layout.php');
 ?>
 
-<main class="main">
+<main class="main" id="perfil">
 
     <div class="informacoes">
       <div class="fundo"> 
@@ -19,12 +19,12 @@ include(__DIR__.'/Layout/Layout.php');
                 <form method="POST" enctype="multipart/form-data" action="Index.php?route=perfil"> 
                   <label for="conteudo">Alterar Perfil:</label>
                   <input type="file" name="perfil" accept="image/*">    
-                    <button type="submit">Enviar imagem</button>
+                    <button type="submit">Enviar imagem de perfil</button>
                 </form>
                 <form method="POST" enctype="multipart/form-data" action="Index.php?route=perfil"> 
                   <label for="conteudo">Alterar Imagem de Fundo:</label>
                   <input type="file" name="fundo" accept="image/*">    
-                    <button type="submit">Enviar imagem</button>
+                    <button type="submit">Enviar imagem de fundo</button>
                 </form>
                 </div>
             </div>

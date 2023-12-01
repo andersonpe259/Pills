@@ -132,10 +132,17 @@ class UserController extends Controller{
                 
                 if (move_uploaded_file($nome_temporario, $caminho_destino)) {
                     echo "A imagem foi carregada com sucesso.";
-                    $userModel->updateAvatar($imgSave, $_SESSION['user_id']);
+
                     if($type == "perfil"){
+                        $userModel->updateAvatar($imgSave, $_SESSION['user_id']);
                         $_SESSION['avatar'] = $imgSave;
+                        
                     }
+                    elseif($type == "fundo"){
+                        $userModel->updateImgPerfil($imgSave, $_SESSION['user_id']);
+                        $_SESSION['imgPerfil'] = $imgSave;
+                    }
+                    
                 } else {
                     echo "Erro ao carregar a imagem.";
                 }

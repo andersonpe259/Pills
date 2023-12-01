@@ -22,7 +22,7 @@
               <?php foreach($tags as $tag => $value): ?>
                 <li>
                   <button type='submit' class='nav-link scrollto' name='tag' value='<?= $value['has_id']?>'>
-                    <i class='bi bi-hash'></i> <span><?= $value['has_hashtag']?></span>
+                    <span style="color:#FCDA4D"><?= $value['has_hashtag']?></span>
                   </button>
                 </li>
               <?php endforeach; ?>
@@ -31,8 +31,11 @@
         </div>
       <?php endif; ?>
     </div>
+    
+    
 
-    <ul id="listaRecomendacoes" class="recomendacoes">
+    
+    <ul id="listaRecomendacoes">
       <?php include(__DIR__."/Layout/SimplePostStructure.php"); ?>
     </ul>
   </div>

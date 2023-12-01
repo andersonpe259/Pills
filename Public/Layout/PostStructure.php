@@ -22,7 +22,7 @@
             <div class='imgUserPost'><img src="../Storage/perfil/<?= $value['usu_avatar']; ?>" alt=''></div>
             <div class='nameAndHour'>
                 <?php if($route == 'notifications'): ?>
-                    <p><strong><?= $value['usu_nome'];?></strong>| Post Compartilhado por <?= $value['sender_name'];?></p>
+                    <p id="data"><strong><?= $value['usu_nome'];?></strong>| Post Compartilhado por <?= $value['sender_name'];?></p>
                 <?php else: ?>
                     <strong><?= $value['usu_nome'];?></strong>
                 <?php endif; ?>
@@ -38,21 +38,28 @@
             <div class='modal' id='modal<?= $value['pos_id'] ?>'>
               <div class='modal-content'>
                 <span class='close'>&times;</span>
-                <h2>Comentários</h2>
+                <strong id='coment'>Comentários</strong>
                 <?php if($comments != null): ?>
                 <div class="conteudo_comment">
                   <?php foreach($comments as $comment => $item): ?>
-                    <h5><?= $item['usu_nome']; ?></h5>
-                    <p><?= $item['com_texto']; ?></p>  
+                    <div class="infoUserPost">
+                      <div class="imgUserPost">
+                        <img src="../Storage/perfil/<?= $item['usu_avatar']; ?>" alt=''>                        
+                      </div>
+                      <strong><?= $item['usu_nome']; ?></strong>
+                      <p id="comentario"><?= $item['com_texto']; ?></p>    
+                    </div>       
                   <?php endforeach; ?>
                 </div>
                   <?php else: ?>
-                    <h5>Tenha coragem e faça o primeiro comentário do Post</h5>
+                    <div>
+                    <p>Faça o primeiro comentário do post</p>
+                    </div>                    
                   <?php endif; ?>
                 
-                  <form action="Index.php?route=<?= $route ?>" method="POST">
+                  <form class="formCom" action="Index.php?route=<?= $route ?>" method="POST">
                     <div class='seu-comentario'>
-                      <input type='text' name='comentario' placeholder='Digite seu comentário'><button type='submit' class='btnSubmitForm coment' name='idPost' value='<?= $value['pos_id'] ?>'>Enviar</button>
+                      <textarea name='comentario' placeholder='Digite seu comentário'></textarea><button id="envio" type='submit' class='btnSubmitForm coment' name='idPost' value='<?= $value['pos_id'] ?>'>Enviar</button>
                     </div>
                   </form>     
               </div>
@@ -63,23 +70,28 @@
                     <div class='modal' id='modalUsers1'>
                     <div class='modal-content'>
                         <span class='close'>&times;</span>
-                        <h2>Usuários</h2>
+                        <strong id='coment'>Usuários</strong>
+                        <form action="Index.php?route=<?= $route ?>" method="POST">
+                            <div class='seu-comentario' id="buscaUsu">
+                            <i class="bi bi-search" style="color: #FCDA4D; padding: 10px"></i><input type='text' name='comentario' placeholder='Pesquise o usuário' id="filtroInput">
+                            </div>
+                        </form>
                         <form action="Index.php?route=<?= $route ?>" method="POST">
                             <input type="hidden" name="idPost" value="<?= $value['pos_id'] ?>">
                             <ul id="listaRecomendacoes">
                               <?php foreach($users as $user => $item): ?>
                                 <li class="post-item">
-                                  <button type='submit' class='filepost' name='marcar' value='<?= $item['usu_id'];?>'><h5><?= $item['usu_nome']; ?></h5></button>
+                                <div class="infoUserPost">
+                                <div class="imgUserPost">
+                                  <img src="../Storage/perfil/<?= $item['usu_avatar']; ?>" alt=''>                        
+                                </div>
+                                  <button id="usuario" type='submit' class='filepost' name='marcar' value='<?= $item['usu_id'];?>'><strong><?= $item['usu_nome']; ?></strong></button>
+                              </div>   
                                 </li> 
                               <?php endforeach; ?>
                             </ul>
                         
-                        </form>   
-                        <form action="Index.php?route=<?= $route ?>" method="POST">
-                            <div class='seu-comentario'>
-                            <input type='text' name='comentario' placeholder='Digite seu comentário' id="filtroInput">
-                            </div>
-                        </form>     
+                        </form>
                     </div>
                     </div>
 

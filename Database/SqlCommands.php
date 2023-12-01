@@ -12,8 +12,8 @@ class SqlCommands{
         
         ],
         "viewPost" => [
-            "SELECT pos_id, pos_conteudo, usu_nome, usu_avatar, pos_data_postagem FROM tb_posts LEFT JOIN tb_usuarios ON pos_usu_id = usu_id ORDER BY pos_data_postagem DESC;",
-            "SELECT pos_id, pos_conteudo, usu_nome, usu_avatar, pos_data_postagem FROM tb_posts LEFT JOIN tb_usuarios ON pos_usu_id = usu_id WHERE pos_usu_id = ? ORDER BY pos_data_postagem DESC;",
+            "SELECT pos_id, pos_conteudo, usu_nome, usu_avatar, DATE_FORMAT(pos_data_postagem, '%Hh%i - %d/%m/%Y') as pos_data_postagem FROM tb_posts LEFT JOIN tb_usuarios ON pos_usu_id = usu_id ORDER BY pos_data_postagem DESC;",
+            "SELECT pos_id, pos_conteudo, usu_nome, usu_avatar, DATE_FORMAT(pos_data_postagem, '%Hh%i - %d/%m/%Y') as pos_data_postagem FROM tb_posts LEFT JOIN tb_usuarios ON pos_usu_id = usu_id WHERE pos_usu_id = ? ORDER BY pos_data_postagem DESC;",
          ],
         "searchPost" => [
             "SELECT pos_id, pos_conteudo, usu_nome, usu_avatar, GROUP_CONCAT(has_hashtag) AS hashtags, GROUP_CONCAT(has_id) AS has_ids, pos_data_postagem FROM tb_posts LEFT JOIN tb_usuarios ON pos_usu_id = usu_id LEFT JOIN tb_comentarios ON com_pos_id = pos_id LEFT JOIN tb_hashdosposts ON hdp_pos_id = pos_id LEFT JOIN tb_hashtag ON hdp_has_id = has_id GROUP BY pos_id, pos_conteudo, usu_nome, usu_avatar, pos_data_postagem ORDER BY com_id DESC, pos_data_postagem DESC;",

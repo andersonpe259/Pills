@@ -6,12 +6,112 @@
 
 }
 
+body{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#tags{
+  color:#FCDA4D;
+  text-decoration: none;
+}
+
+.hashtags{
+  text-decoration: none;
+}
+
+#not{
+  display: flex;
+  flex-direction: column; /* Centraliza horizontalmente */
+}
+
+strong {
+  font-size: 16px; /* Ajuste o valor conforme desejado */
+}
+
+#coment{
+  font-size: 20px;
+}
+
+#comentario{
+  margin-left: 15px;
+}
+
+.modal .infoUserPost{
+  margin: 10px 10px;
+}
+
+button .main{
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+.posts{
+  display: grid;
+  place-items: center;
+}
+
+main{
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  width: 90vw;
+}
+
+#not strong{
+  text-align: start;
+}
+
+.headersaves >strong{
+  width: 96%;
+  font-size: 20px;
+  color: #FCDA4D;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 15px 0px;
+  padding: 25px;
+
+  float: right;
+  
+}
+
+div.postsalvos ul#listaRecomendacoes .bi{
+color: #FCDA4D;
+}
+
+div.postsalvos ul#listaRecomendacoes button.active:focus .bi-bookmark-fill{
+  color: #fff;
+
+}
+
+.headersaves >strong{
+  width: 96%;
+  font-size: 20px;
+  color: #FCDA4D;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 15px 0px;
+  padding: 25px;
+
+  float: right;
+  
+}
+
 .search{
   margin: 0 10px 0 10px;
 }
 
 .seu-comentario{
-  display: flex;
+  display: flex;  
+}
+
+div.modal-content .formCom{
+  margin-top: auto;
 }
 
 div.seu-comentario button{
@@ -21,6 +121,7 @@ div.seu-comentario button{
 .conteudo_comment{
   height: 500px; 
   overflow: auto;
+  flex: 1;
 }
 
 .modal {
@@ -39,23 +140,41 @@ div.seu-comentario button{
 
 #listaRecomendacoes{
   list-style-type: none;
+  padding: 0;
+}
+
+#filtroInput{
+  margin: 0;
+}
+
+#usuario{
+  justify-content: start;
+  margin: 0;
+  padding: 0;
 }
 
 .modal input{
   width: 80%;
 }
 
+#data{
+  margin-bottom: 0;
+}
+
 /* Estilo para o conteúdo da tela sobreposta */
 .modal-content {
   background-color: #040b14;
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 80%;
+  height: 70vh;
+  width: 70vw;
+  border-radius: 10px;
+  box-shadow: 1px 0 3px black;
   display: flex;
+  flex-direction: column;
 }
 
 /* Estilo para o botão de fechar */
@@ -98,8 +217,8 @@ body {
 @media (max-width: 991px) {
   #header {
     width: 300px;
-    background: #fff;
-    border-right: 1px solid #e6e9ec;
+    background: #1C2120;
+    border-right: 2px solid black;
     left: -300px;
   }
 }
@@ -115,19 +234,19 @@ body {
   }
 
   li.newPost{
-    width: 90%;
+    width: 80%;
     height: 240px;
 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin: 50px 0px;
     padding: 25px;
 
     background: #040b14;
     border-radius: 10px;
     box-shadow: 1px 0 3px rgba(0,0,0,0.2);
     float: right;
+    margin: 50px 0 20px 0;
   }
   .imgUserPost img{
     width: 35px;
@@ -162,7 +281,6 @@ body {
   }
 
   li.newPost div.infoUser strong{
-    font-size: 16px;
     color: #FCDA4D;
     margin-left: 10px;
   }
@@ -178,17 +296,34 @@ body {
     height: 90px;
     background-color: #1C2120;
     margin: 15px 0;
-    padding: 25px;
+    padding: 10px;
     border-radius: 10px;
     resize: none;
     outline: none;
     border: 0;
     width: 100%;
+    border: transparent;
+    box-shadow: none;
 
-    font-weight: bold;
     font-family: 'Roboto', sans-serif;
     color: #fff;
 
+  }
+
+  .modal textarea, .modal input{
+    height: 44px;
+    background-color: #1C2120;
+    padding: 10px;
+    border-radius: 10px;
+    resize: none;
+    outline: none;
+    border: 0;
+    width: 100%;
+    border: transparent;
+    box-shadow: none;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    margin-right: 10px;
   }
 
   li.newPost form.formPost div.iconsAndButton{
@@ -232,22 +367,42 @@ body {
     transition: background 0.2s;
   }
 
+  #envio{
+    height: auto;
+    background-color: #FCDA4D;
+    color: #1C2120;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    border: 0;
+    border-radius: 10px;
+    transition: background 0.2s;
+  }
+
   button.btnSubmitForm:hover{
     background: #1C2120;
     color: #FCDA4D;
   }
 
+  ul.posts{
+    list-style: none; /* Remove os marcadores padrão da lista */
+    padding: 0;
+    margin: 0;
+    width: 90%;
+  }
+
   ul.posts li.post{
     padding: 25px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     background-color: #040b14;
     border-radius: 10px;
     box-shadow: 1px 0 3px rgba(0,0,0,0.2);
     float: right;
-    width: 90%;
+    width: 80%;
     list-style: none;
     align-items: center;
     justify-content: center;
+    display: list-item;
   }
 /*
   li.newPost div.infoUser strong{
@@ -301,7 +456,6 @@ body {
 
   ul.posts li.post >p{
     width: 100%;
-    font-weight: bold;
     text-align: justify;
   }
 
@@ -317,7 +471,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 10px;
     border-radius: 10px;
     color: #FCDA4D;
     cursor: pointer;
@@ -346,8 +499,12 @@ body {
     justify-content: center;
   }
 
+  .headerNot{
+    order: -1;
+  }
+
   .headerNot >strong{
-    width: 90%;
+    width: 100%;
     font-size: 20px;
     color: #FCDA4D;
 
@@ -447,37 +604,46 @@ div.busca div.pesqFiltro button{
   margin-right: 10px;
   border-radius: 10px;
   background-color: #FCDA4D;
-  color: #fff;
+  color: #040b14;
 }
 
 div.sugestoes ul{
-
   background-color: #040b14;
   list-style: none;
- 
 }
 
-ul.recomendacoes li.search{
+#salvos, #perfil{
+  display: block;
+  width: 100vw;
+}
+
+ul#listaRecomendacoes{
+  list-style: none;
+  padding: 0;
+  display: flex; /* Adicionando display: flex para o elemento pai */
+  flex-wrap: wrap; /* Para envolver os itens se necessário */
+}
+
+ul#listaRecomendacoes li.search{
+    height: 150px;
     padding: 25px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     background-color: #040b14;
     border-radius: 10px;
     box-shadow: 1px 0 3px rgba(0,0,0,0.2);
-    float: right;
-    width: 30%;
+    width: 240px;
     list-style: none;
     align-items: center;
     justify-content: center;
-  
 }
 
-ul.recomendacoes li.search div.infoUserPost{
+ul#listaRecomendacoes li.search div.infoUserPost{
   display: flex;
   margin-right: 10px;
   
 }
 
-ul.recomendacoes li.search div.infoUserPost div.imgUserPost{
+ul#listaRecomendacoes li.search div.infoUserPost div.imgUserPost{
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -485,7 +651,7 @@ ul.recomendacoes li.search div.infoUserPost div.imgUserPost{
   margin-right: 10px;
 }
 
-ul.recomendacoes li.search >a{
+ul#listaRecomendacoes li.search >a{
   display: flex;
   flex-direction: column;
 }
@@ -629,7 +795,7 @@ ul.recomendacoes li.search >a{
 }
 
 .mobile-nav-active .mobile-nav-toggle {
-  color: #fff;
+  color: #040b14;
   background-color: #FCDA4D;
 }
 
@@ -648,8 +814,8 @@ button{
     background-color: transparent;
     outline: none;
 }
-.bi,
-main .bx{
+
+main .bx, .bi{
     color: #FCDA4D;;
 }
 
@@ -660,7 +826,7 @@ main .bx{
   
 }
 
-.recomendacoes button i{
+#listaRecomendacoes button i{
   
   display: inline-block;
   padding: 8px 0;
@@ -669,7 +835,7 @@ main .bx{
   transition: 0.3s;
 }
 
-div.postsalvos ul.recomendacoes{
+div.postsalvos ul#listaRecomendacoes{
 padding: 25px;
 }
 
@@ -699,11 +865,12 @@ div.informacoes div.imgperfil{
 
 
 div.informacoes div.imgperfil img{
-  width: 15%;
-  border-radius: 80%;
- margin-bottom: 1%;
-margin-top: 1%;
- 
+  width: 100px;
+  border-radius: 100%;
+  margin-bottom: 1%;
+  margin-top: 1%;
+  height: 100px;
+  object-fit: cover;
 }
 
 div.informacoes div.dados a{

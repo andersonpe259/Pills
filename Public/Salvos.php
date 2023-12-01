@@ -1,8 +1,8 @@
 <?php include(__DIR__.'/Layout/Layout.php'); ?>
 
-  <main class="main">
+  <main class="main" id="salvos">
 
-    <div class="headerNot">
+    <div class="headersaves">
       <strong>Salvos</strong>
   </div>
 
