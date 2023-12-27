@@ -35,10 +35,10 @@ class SqlCommands{
             "INSERT INTO tb_salvarpost (sal_usu_id, sal_pos_id) VALUES (?, ?);"
         ],
         "viewSave" => [
-            "SELECT pos_id, pos_conteudo, usu_nome, usu_avatar, pos_data_postagem FROM tb_usuarios INNER JOIN tb_salvarpost ON usu_id = sal_usu_id INNER JOIN tb_posts ON sal_pos_id = pos_id WHERE sal_usu_id = ?;"
+            "SELECT pos_id, pos_conteudo, usu_nome, usu_avatar, pos_data_postagem FROM tb_salvarpost INNER JOIN tb_posts ON sal_pos_id = pos_id  INNER JOIN tb_usuarios ON pos_usu_id = usu_id WHERE sal_usu_id = ? ORDER BY pos_data_postagem DESC;"
         ],
         "viewNotification" => [
-            "SELECT po.pos_id, po.pos_conteudo, us1.usu_nome, us1.usu_avatar, po.pos_data_postagem, us2.usu_nome AS sender_name FROM tb_compartilharpost cp INNER JOIN tb_posts po ON cp.cpo_pos_id = po.pos_id  INNER JOIN tb_usuarios us1 ON po.pos_usu_id = us1.usu_id INNER JOIN tb_usuarios us2 ON cp.cpo_ususend_id = us2.usu_id  WHERE cp.cpo_usureceive_id = ?;"
+            "SELECT po.pos_id, po.pos_conteudo, us1.usu_nome, us1.usu_avatar, DATE_FORMAT(po.pos_data_postagem, '%Hh%i - %d/%m/%Y') as pos_data_postagem, us2.usu_nome AS sender_name FROM tb_compartilharpost cp INNER JOIN tb_posts po ON cp.cpo_pos_id = po.pos_id  INNER JOIN tb_usuarios us1 ON po.pos_usu_id = us1.usu_id INNER JOIN tb_usuarios us2 ON cp.cpo_ususend_id = us2.usu_id  WHERE cp.cpo_usureceive_id = ? ORDER BY pos_data_postagem DESC;"
         ],
         "insertNotification" => [
             "INSERT INTO tb_compartilharpost (cpo_ususend_id, cpo_usureceive_id, cpo_pos_id) VALUES (?, ?, ?); "

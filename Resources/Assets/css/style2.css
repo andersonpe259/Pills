@@ -545,7 +545,7 @@ div.busca{
 div.busca div.pesquisa{
   
   padding: 40px;
-  margin: 20px;
+  margin-bottom: 20px;
   background-color: #040b14;
   border-radius: 15px;
   box-shadow: 1px 0 3px rgba(0,0,0,0.2);
@@ -625,7 +625,7 @@ ul#listaRecomendacoes{
 }
 
 ul#listaRecomendacoes li.search{
-    height: 150px;
+    min-height: 150px;
     padding: 25px;
     margin-bottom: 20px;
     background-color: #040b14;

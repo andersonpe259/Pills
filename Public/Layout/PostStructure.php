@@ -31,6 +31,7 @@
         </div>
         <p>
         <?= $value['pos_conteudo']; ?>
+      
         </p>
 
         <div class='actionBtnPost'>  
@@ -66,8 +67,8 @@
           </div>
           
             <?php if($route == 'principal'): ?>
-                <button type='button' class='filepost openModal' data-modal='modalUsers1'><i class='bi bi-send' alt='compartilhar'></i></button>
-                    <div class='modal' id='modalUsers1'>
+                <button type='button' class='filepost openModal' data-modal='modalC<?= $value['pos_id'] ?>'><i class='bi bi-send' alt='compartilhar'></i></button>
+                    <div class='modal' id='modalC<?= $value['pos_id'] ?>'>
                     <div class='modal-content'>
                         <span class='close'>&times;</span>
                         <strong id='coment'>Usuários</strong>
@@ -76,6 +77,7 @@
                             <i class="bi bi-search" style="color: #FCDA4D; padding: 10px"></i><input type='text' name='comentario' placeholder='Pesquise o usuário' id="filtroInput">
                             </div>
                         </form>
+                        
                         <form action="Index.php?route=<?= $route ?>" method="POST">
                             <input type="hidden" name="idPost" value="<?= $value['pos_id'] ?>">
                             <ul id="listaRecomendacoes">
