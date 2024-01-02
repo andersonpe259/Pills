@@ -571,18 +571,14 @@ div.busca{
 }
 
 .barra{
-  background-color: #1C2120;
+  background-color: #040b14;
   padding: 0 10px 0 10px;
   border-radius: 20px;
 }
 
 div.busca div.pesquisa{
-  
-  padding: 40px;
-  margin-bottom: 20px;
-  background-color: #040b14;
+  margin: 50px 0 0 0;
   border-radius: 15px;
-  box-shadow: 1px 0 3px rgba(0,0,0,0.2);
   float: right;
   width: 100%;
   border: none;
@@ -595,7 +591,7 @@ div.busca div.pesquisa{
 div.busca div.barra >input{
 
   height: 60px;
-  background-color: #1C2120;
+  background-color: #040b14;
   margin-left: 0%;
   padding: 25px;
   border-radius: 10px;
@@ -603,7 +599,6 @@ div.busca div.barra >input{
   outline: none;
   border: 0;
   width: 80%;
-  font-weight: bold;
   font-family: 'Roboto', sans-serif;
   color: #fff;
 
@@ -620,9 +615,6 @@ div.busca div.pesquisa >button{
 }
 
 div.busca div.pesqFiltro{
-
- 
-  background-color: #040b14;
   align-items: center;
   justify-content: center;
   padding: 15px;
@@ -642,7 +634,6 @@ div.busca div.pesqFiltro button{
 }
 
 div.sugestoes ul{
-  background-color: #040b14;
   list-style: none;
 }
 
@@ -658,18 +649,23 @@ ul#listaRecomendacoes{
   flex-wrap: wrap; /* Para envolver os itens se necessário */
 }
 
-ul#listaRecomendacoes li.search{
-    min-height: 150px;
-    padding: 25px;
-    margin-bottom: 20px;
-    background-color: #040b14;
-    border-radius: 10px;
-    box-shadow: 1px 0 3px rgba(0,0,0,0.2);
-    width: 240px;
-    list-style: none;
-    align-items: center;
-    justify-content: center;
+ul#listaRecomendacoes li.search {
+  height: 200px;
+  overflow-y: auto;
+  padding: 25px;
+  margin-bottom: 20px;
+  background-color: #040b14;
+  border-radius: 10px;
+  box-shadow: 1px 0 3px rgba(0,0,0,0.2);
+  list-style: none;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 1px solid #000;
+  margin: 10px; /* Margem de 10 pixels em todas as direções */
+  width: calc((100% - 60px) / 3); /* Subtrai 60px (margem total) do total e divide por 3 */
 }
+
 
 ul#listaRecomendacoes li.search div.infoUserPost{
   display: flex;
@@ -885,6 +881,14 @@ div.headerNot img{
 perfil.html
 -------------------------------------------*/
 
+div.imgperfil, div.dados{
+  margin: 0 20px 0 20px;
+}
+
+div.dados{
+  margin-bottom: 40px;
+}
+
 div.informacoes .fundo img{
   background-color: #040b14;
   width: 100%;
@@ -895,8 +899,6 @@ div.informacoes div.imgperfil{
   display: flex;
   justify-content: space-between;
 }
-
-
 
 div.informacoes div.imgperfil img{
   width: 100px;
@@ -909,7 +911,7 @@ div.informacoes div.imgperfil img{
 
 div.informacoes div.dados a{
   width: 2%;
-  color: #45505b;
+  color: #FCDA4D;
  
 }
 
@@ -935,9 +937,6 @@ div.informacoes div.editar button{
     transition: background 0.2s;
     margin-top: 10%;
 }
-
-
-
 
 div.informacoes div.editar button:hover{
 background: #45505b;
@@ -996,6 +995,22 @@ color: #FCDA4D;
   padding: 0;
   height: 200px;
   overflow: hidden;
+}
+
+/* Barra de rolagem */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Bolinha que indica onde está na página */
+::-webkit-scrollbar-thumb {
+  background-color: #FCDA4D;
+  border-radius: 4px;
+}
+
+/* Track - a trilha onde a barra de rolagem percorre */
+::-webkit-scrollbar-track {
+  background-color: #040b14;
 }
 
 

@@ -12,7 +12,8 @@
           <?php include(__DIR__."/Layout/SimplePostStructure.php"); ?>
         </ul>
         <?php else: ?>
-          <h1>Não há nenhum post salvo, ainda...</h1>
+          <p>Sem posts salvos no momento</p>
+          <img src="/Resources/Assets/img/triste.png" style="height: 150px;">
         <?php endif; ?>   
     </div>
   </main> 
