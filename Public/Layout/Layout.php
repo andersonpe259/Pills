@@ -24,6 +24,7 @@
 
   <!-- Template Main CSS File -->
   <link href="../../Resources/Assets/css/style2.css" rel="stylesheet">
+  <script src="../../Resources/Assets/js/popup.js" defer></script>
 
   <!-- =======================================================
   * Template Name: iPortfolio
@@ -32,6 +33,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
 </head>
 
 <body>
@@ -54,8 +56,17 @@
           <li><a href="Index.php?route=pesquisa" class="nav-link scrollto"><i class="bx bx-search"></i> <span>Pesquisar</span></a></li>
           <li><a href="Index.php?route=saves" class="nav-link scrollto"><i class="bx bx-bookmark"></i> <span>Salvos</span></a></li>
           <li><a href="Index.php?route=perfil" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Perfil</span></a></li>
-          <li><a href="Index.php" class="nav-link scrollto"><i class="bx bx-door-open"></i> <span>Sair</span></a></li>
+         <li><a href="#" onclick="exibirPopup()" class="nav-link scrollto"><i class="bx bx-door-open"></i> <span>Sair</span></a></li>
         </ul>
       </nav><!-- .nav-menu -->
     </div>
   </header><!-- End Header -->
+  <div id="overlay"></div>
+
+  <div id="popup-container" class="popup-container">
+      <p>Deseja mesmo sair?</p>
+      <button onclick="confirmarSaida()">Sim</button>
+      <button onclick="fecharPopup()">Não</button>
+  </div>
+
+ 

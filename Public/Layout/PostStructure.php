@@ -110,11 +110,20 @@
                     <button type='submit' class='filepost' name='apagar' value='<?= $value['pos_id'];?>'><i class='bi bi-eye' alt='salvar'></i></button>
                 </form>
             <?php elseif($route == 'perfil'): ?>
-              <form action="Index.php?route=<?= $route ?>" method="POST">
-                    <button type='submit' class='filepost' name='apagar' value='<?= $value['pos_id'];?>'><i class='bi bi-trash' alt=''></i></button>
-                </form>
+                <button onclick="exibirPopup(<?= $value['pos_id'];?>)"><i class='bi bi-trash' alt=''></i></button>
+                
+                <div id="overlay"></div>
+
+                <div id="popup-container<?= $value['pos_id'];?>" class="popup-container">
+                    <p>Deseja mesmo apagar este post?</p>
+                    <form action="Index.php?route=<?= $route ?>" method="POST">
+                      <button type='submit' class='filepost' name='apagar' value='<?= $value['pos_id'];?>'>Sim</button>
+                    </form>
+                    <button onclick="fecharPopup(<?= $value['pos_id'];?>)">Não</button>
+                </div>
             <?php endif; ?>
           </div>
 
         </li>
+        
 <?php endforeach; ?>
