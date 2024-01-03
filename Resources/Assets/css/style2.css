@@ -6,6 +6,10 @@
 
 }
 
+.icone{
+  height: 56px;
+}
+
 /* Estilos básicos para o dropdown */
 .dropdown {
   position: relative;
@@ -87,18 +91,21 @@ button .main{
 }
 
 main{
-  display: flex;
   justify-content: center; /* Centraliza horizontalmente */
   align-items: center; /* Centraliza verticalmente */
-  width: 90vw;
 }
+
 
 #not strong{
   text-align: start;
 }
 
+.headersaves{
+  display: flex;
+  justify-content: center;
+}
+
 .headersaves >strong{
-  width: 96%;
   font-size: 20px;
   color: #FCDA4D;
 
@@ -111,6 +118,7 @@ main{
   float: right;
   
 }
+
 
 div.postsalvos ul#listaRecomendacoes .bi{
 color: #FCDA4D;
@@ -119,21 +127,6 @@ color: #FCDA4D;
 div.postsalvos ul#listaRecomendacoes button.active:focus .bi-bookmark-fill{
   color: #fff;
 
-}
-
-.headersaves >strong{
-  width: 96%;
-  font-size: 20px;
-  color: #FCDA4D;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 15px 0px;
-  padding: 25px;
-
-  float: right;
-  
 }
 
 .search{
@@ -167,6 +160,7 @@ div.seu-comentario button{
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
+  overflow: auto;
 }
 .hidden{
   display: none;
@@ -252,8 +246,8 @@ body {
   #header {
     width: 300px;
     background: #1C2120;
-    border-right: 2px solid black;
     left: -300px;
+    box-shadow: 5px 0 3px rgba(0,0,0,0.2);
   }
 }
 
@@ -269,7 +263,7 @@ body {
 
   li.newPost{
     width: 80%;
-    height: 240px;
+    max-width: 650px;
 
     display: flex;
     flex-direction: column;
@@ -422,10 +416,12 @@ body {
     list-style: none; /* Remove os marcadores padrão da lista */
     padding: 0;
     margin: 0;
-    width: 90%;
+    width: 100%;
   }
 
   ul.posts li.post{
+    word-wrap: break-word;
+    max-width: 650px;
     padding: 25px;
     margin-bottom: 20px;
     background-color: #040b14;
@@ -437,6 +433,7 @@ body {
     align-items: center;
     justify-content: center;
     display: list-item;
+    overflow: hidden;
   }
 /*
   li.newPost div.infoUser strong{
@@ -647,9 +644,14 @@ ul#listaRecomendacoes{
   padding: 0;
   display: flex; /* Adicionando display: flex para o elemento pai */
   flex-wrap: wrap; /* Para envolver os itens se necessário */
+  justify-content: center;
+  align-items: center;
 }
 
 ul#listaRecomendacoes li.search {
+  min-width: 200px;
+  min-height: 150px;
+  word-wrap: break-word;
   height: 200px;
   overflow-y: auto;
   padding: 25px;
@@ -869,6 +871,10 @@ div.postsalvos ul#listaRecomendacoes{
 padding: 25px;
 }
 
+div.postsalvos h6{
+  text-align: center;
+}
+
 div.headerNot img{
   width: 100%;
 }
@@ -935,7 +941,11 @@ div.informacoes div.editar button{
     border: 0;
     border-radius: 10px;
     transition: background 0.2s;
-    margin-top: 10%;
+    margin-top: 10px;
+}
+
+.conteudo{
+  background-color: yellow;
 }
 
 div.informacoes div.editar button:hover{
@@ -993,7 +1003,6 @@ color: #FCDA4D;
 .preview-fundo{
   margin: 0;
   padding: 0;
-  height: 200px;
   overflow: hidden;
 }
 

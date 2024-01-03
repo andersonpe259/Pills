@@ -23,8 +23,14 @@ main{
 p{
     text-align: center;
 }
+
+#btnRegistrar:disabled{
+    background-color: #969696;
+    color: white;
+}
+
 .btn-primary, .btn-primary:focus, .btn-primary:hover{
-    width: 350px;
+    width: 400px;
     border: none;
     outline: none;
     color: black;
@@ -36,7 +42,6 @@ a{
 }
 .form-control, .form-control:focus{
     color: black;
-    width: 350px;
     border: none;
     outline: white;
     background-color: #969696;

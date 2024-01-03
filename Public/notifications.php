@@ -10,8 +10,7 @@ include(__DIR__.'/Layout/Layout.php');
       <?php if($posts != null): ?>
         <?php include (__DIR__."/Layout/PostStructure.php"); ?>
       <?php else: ?>
-        <p>Sem notificações no momento</p>
-        <img src="/Resources/Assets/img/triste.png" style="height: 150px;">
+        <h6>Sem notificações no momento</h6>
       <?php endif; ?>
     </ul>
 </main>

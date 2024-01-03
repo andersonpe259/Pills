@@ -46,7 +46,7 @@
     <div class="d-flex flex-column">
 
       <div class="profile">
-        <img src="../../Resources/Assets/img/pills2.jpg" alt="" class="img-fluid rounded-circle">
+        <img src="../../Resources/Assets/img/pills2.jpg" alt="" class="img-fluid rounded-circle icone">
       </div>
 
       <nav id="navbar" class="nav-menu navbar">

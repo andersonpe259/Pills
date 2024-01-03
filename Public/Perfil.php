@@ -24,11 +24,11 @@ include(__DIR__.'/Layout/Layout.php');
                 <div class="modal-content">
                 <span class="close">&times;</span>
                 <form method="POST" enctype="multipart/form-data" action="Index.php?route=perfil"> 
-                  <label for="conteudo">Alterar Perfil:</label>
+                  <label for="conteudo">Alterar imagem de perfil:</label>
                   <input type="file" name="perfil" accept="image/*" id="input-imagem0" onchange="previewImagem(0)">  
                   <label>Preview: </label>  
                     <img id="imagem-preview0" alt="Prévia da Imagem">
-                    <button type="submit">Enviar imagem de perfil</button>
+                    <button type="submit">Enviar imagem</button>
                 </form>
                 </div>
             </div>
@@ -36,14 +36,14 @@ include(__DIR__.'/Layout/Layout.php');
                 <div class="modal-content">
                 <span class="close">&times;</span>
                 <form method="POST" enctype="multipart/form-data" action="Index.php?route=perfil" id="formulario">
-                    <label for="conteudo">Alterar Imagem de Fundo:</label>
+                    <label for="conteudo">Alterar imagem de fundo:</label>
                     <input type="file" name="fundo" accept="image/*" id="input-imagem1" onchange="previewImagem(1)">   
                     <label>Preview: </label>
                     <div class="preview-fundo">
                       <img id="imagem-preview1" alt="Prévia da Imagem">
                     </div> 
                     
-                    <button type="submit">Enviar imagem de fundo</button>
+                    <button type="submit">Enviar imagem</button>
                 </form>
                 </div>
             </div>
